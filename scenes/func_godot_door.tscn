@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dd4svac8s4jfj"]
+
+[ext_resource type="Script" uid="uid://de1u4v6s6eqlo" path="res://addons/func_godot/src/fgd/func_godot_door.gd" id="1_27vqe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2yjle"]
+size = Vector3(1, 2, 0.48461914)
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" unique_id=1992419575]
+script = ExtResource("1_27vqe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=998777100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.014282227)
+shape = SubResource("BoxShape3D_2yjle")

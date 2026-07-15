@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dapn06wfxd2mg"]
+
+[ext_resource type="Shader" uid="uid://dm0x5202c5rja" path="res://maps/ps1.gdshader" id="1_4n0hn"]
+[ext_resource type="Texture2D" uid="uid://b6itlgeboumjd" path="res://assets/icant.png" id="2_6e3g8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2yjle"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2yjle"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_576s4"]
+render_priority = 0
+shader = ExtResource("1_4n0hn")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = ExtResource("2_6e3g8")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2yjle"]
+
+[node name="Node3D" type="Node3D" unique_id=1480074335]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1775398024]
+mass = 0.234
+physics_material_override = SubResource("PhysicsMaterial_2yjle")
+gravity_scale = 0.719
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1338546130]
+shape = SubResource("SphereShape3D_2yjle")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1417215278]
+material_override = SubResource("ShaderMaterial_576s4")
+mesh = SubResource("SphereMesh_2yjle")

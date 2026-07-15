@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bgimnechp86t1"]
+
+[ext_resource type="Texture2D" uid="uid://oqf4nigahbhi" path="res://textures/windah.png" id="1_sjmc8"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_sjmc8")
+metallic_specular = 0.0
+texture_filter = 2

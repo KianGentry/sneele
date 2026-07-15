@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://8fsgnxfk5k4q"]
+
+[ext_resource type="Texture2D" uid="uid://cvomxkw7i3mbh" path="res://textures/chair.png" id="1_i2o7u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pej2d"]
+friction = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i2o7u"]
+
+[node name="chair" type="Node3D" unique_id=230600662]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1854792472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14487064, 0)
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_pej2d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1634446563]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.2620902, 0)
+shape = SubResource("SphereShape3D_i2o7u")
+
+[node name="Sprite3D" type="Sprite3D" parent="RigidBody3D" unique_id=1540583612]
+transform = Transform3D(1.3844937, 0, 0, 0, 1.3844937, 0, 0, 0, 1, 0, 0.42651337, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_i2o7u")

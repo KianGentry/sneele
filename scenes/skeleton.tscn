@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bp063sqr8og0t"]
+
+[ext_resource type="Texture2D" uid="uid://cv2ony1d6kp0w" path="res://textures/skeleton.png" id="1_pbvs3"]
+
+[node name="skeleton" type="Node3D" unique_id=1274177214]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=959139265]
+texture_filter = 0
+texture = ExtResource("1_pbvs3")

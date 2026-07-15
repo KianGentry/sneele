@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://0vjtt35snd4u"]
+
+[ext_resource type="Material" uid="uid://bmkfkrfgp1b6u" path="res://textures/door.tres" id="1_hpvv5"]
+[ext_resource type="Script" uid="uid://h4f1ojjyc6c4" path="res://scenes/door.gd" id="1_uvdjg"]
+[ext_resource type="AudioStream" uid="uid://cavoumjsaetf8" path="res://sounds/door.mp3" id="3_83dcw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2yjle"]
+size = Vector3(1, 1.8710938, 0.3178711)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hpvv5"]
+size = Vector3(1, 1.883667, 0.3154297)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hpvv5"]
+
+[node name="Door" type="StaticBody3D" unique_id=441943300]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2138221138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4899968, 0.8289094, 0.014807701)
+mesh = SubResource("BoxMesh_2yjle")
+surface_material_override/0 = ExtResource("1_hpvv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1928061668]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4899968, 0.835196, 0.015540123)
+shape = SubResource("BoxShape3D_hpvv5")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=2045399690]
+script = ExtResource("1_uvdjg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=739150608]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.5, 0.8, 0)
+shape = SubResource("CapsuleShape3D_hpvv5")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1235219638]
+stream = ExtResource("3_83dcw")
+volume_db = -7.0
+bus = &"reverb"

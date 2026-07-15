@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDSolidClass" format=3 uid="uid://ci5uctfntx3f3"]
+
+[ext_resource type="Script" uid="uid://5cow84q03m6a" path="res://addons/func_godot/src/fgd/func_godot_fgd_solid_class.gd" id="1_yrodp"]
+[ext_resource type="Script" uid="uid://de1u4v6s6eqlo" path="res://addons/func_godot/src/fgd/func_godot_door.gd" id="2_yrodp"]
+
+[resource]
+script = ExtResource("1_yrodp")
+script_class = ExtResource("2_yrodp")
+classname = "func_door"
+description = "sliding brush door"
+metadata/_custom_type_script = "uid://5cow84q03m6a"

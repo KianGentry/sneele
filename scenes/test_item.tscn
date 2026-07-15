@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cp3ther1s531l"]
+
+[ext_resource type="Script" uid="uid://c6e23ovf0muh1" path="res://scenes/test_item.gd" id="1_fsxny"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vretf"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m8bsq"]
+size = Vector2(60, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m8bsq"]
+
+[node name="testItem" type="Node3D" unique_id=1845204243]
+script = ExtResource("1_fsxny")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=26739054]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1761193118]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+shape = SubResource("SphereShape3D_vretf")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1721319415]
+billboard = 2
+texture = SubResource("PlaceholderTexture2D_m8bsq")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=262222751]
+mass = 0.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=292487102]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_m8bsq")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

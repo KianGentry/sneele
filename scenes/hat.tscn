@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://h8s55s8phh8g"]
+
+[ext_resource type="Texture2D" uid="uid://dc047mi7lmkow" path="res://textures/hat.png" id="1_uepus"]
+
+[node name="hat" type="Node3D" unique_id=819472727]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1635453516]
+texture_filter = 0
+texture = ExtResource("1_uepus")

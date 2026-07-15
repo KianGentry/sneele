@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cwythyxl6lm8"]
+
+[ext_resource type="Shader" uid="uid://dm0x5202c5rja" path="res://maps/ps1.gdshader" id="1_mn53d"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6e3g8"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mn53d")
+shader_parameter/affine_mapping = false
+shader_parameter/albedo = SubResource("PlaceholderTexture2D_6e3g8")
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.5
+shader_parameter/resolution = Vector2i(320, 240)

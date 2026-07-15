@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://drhqx2burm4wb"
+path="res://.godot/imported/stage fail.mp3-eb2ef887e07ab746776998f66bc61223.mp3str"
+
+[deps]
+
+source_file="res://music/stage fail.mp3"
+dest_files=["res://.godot/imported/stage fail.mp3-eb2ef887e07ab746776998f66bc61223.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
