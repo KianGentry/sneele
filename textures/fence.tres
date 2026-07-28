@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bicqccklmsxhv" path="res://textures/fence.png" id="1_8400i"]
 
 [resource]
-transparency = 1
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("1_8400i")
 metallic_specular = 0.0
 texture_filter = 2

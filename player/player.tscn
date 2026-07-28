@@ -205,12 +205,15 @@ stream_1/stream = ExtResource("5_rgyib")
 stream_2/stream = ExtResource("6_hg6s5")
 stream_3/stream = ExtResource("7_8t03j")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2yjle"]
+
 [node name="Player" type="Node3D" unique_id=782366723]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=699007278]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=699007278 node_paths=PackedStringArray("camera")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 platform_on_leave = 2
 script = ExtResource("1_rkbax")
+camera = NodePath("../Camera3D")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=877568716]
 texture_filter = 0
@@ -234,3 +237,7 @@ script = ExtResource("2_g1dw6")
 target = NodePath("../CharacterBody3D")
 
 [node name="UI" parent="." unique_id=853805307 instance=ExtResource("8_rgyib")]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1606539690]
+transform = Transform3D(0.4598991, 0, 0, 0, 0.652309, 0, 0, 0, 0.6, 0, 0.69241136, 0)
+shape = SubResource("BoxShape3D_2yjle")

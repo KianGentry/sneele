@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bmkfkrfgp1b6u"]
 
-[ext_resource type="Texture2D" uid="uid://c8542ifnts7dv" path="res://textures/door.png" id="1_kyt0m"]
+[ext_resource type="Texture2D" uid="uid://c8542ifnts7dv" path="res://assets/door.png" id="1_kyt0m"]
 
 [resource]
 shading_mode = 2

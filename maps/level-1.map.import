@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://boryw3k2mol20"
+path="res://.godot/imported/level-1.map-8eb79e95d4151ce8aaca6c3ef1ec14a2.tres"
+
+[deps]
+
+source_file="res://maps/level-1.map"
+dest_files=["res://.godot/imported/level-1.map-8eb79e95d4151ce8aaca6c3ef1ec14a2.tres"]
+
+[params]
+

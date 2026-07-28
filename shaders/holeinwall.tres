@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://61q2p5c7p3tx"]
+
+[ext_resource type="Shader" uid="uid://bvpvykdx4y5b" path="res://shaders/holeinwall.gdshader" id="1_8hqsf"]
+[ext_resource type="Texture2D" uid="uid://bk45ffxc5smy0" path="res://textures/brick.png" id="2_rk2dk"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_8hqsf")
+shader_parameter/albedo_texture = ExtResource("2_rk2dk")
+shader_parameter/player_depth = 16.00000076
+shader_parameter/cutout_radius = 0.650000030875
+shader_parameter/feather = 0.2000000095
+shader_parameter/depth_margin = 1.0000001424999998

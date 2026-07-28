@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://eptl4r33k8n1"]
+
+[ext_resource type="Texture2D" uid="uid://cu2uwiv4wocu5" path="res://textures/marble.png" id="1_6cy3n"]
+
+[resource]
+albedo_texture = ExtResource("1_6cy3n")
+metallic_specular = 0.0
+texture_filter = 2
