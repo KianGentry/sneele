@@ -4,19 +4,19 @@ extends Control
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
-	# Make sure it starts fully transparent
+	# set alpha to 0
 	black.color.a = 0.0
 	
 	timer.start()
 
 func fade_in_color_rect() -> void:
-	# Create a new Tween node dynamically
+	# new tween
 	var tween: Tween = create_tween()
 	
-	# Animate the alpha channel (color:a) to 1.0 over 1.0 second
+	# alpha increase over a second
 	tween.tween_property(black, "color:a", 1.0, 1.0)
 	
-	# Connect the completion signal
+	# say when ts complete
 	tween.finished.connect(_on_fade_in_finished)
 
 func _on_fade_in_finished() -> void:

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://4jpgbbx5mglg"]
+
+[ext_resource type="Script" uid="uid://wp475xqr63lf" path="res://images.gd" id="1_nv0lf"]
+[ext_resource type="Texture2D" uid="uid://mn12ws4cuiic" path="res://textures/nevo1.jpg" id="2_8jf6a"]
+[ext_resource type="Texture2D" uid="uid://ca3w8258mby06" path="res://textures/nevo2.jpg" id="3_h4rgq"]
+[ext_resource type="Texture2D" uid="uid://bstqlk0w37xkr" path="res://textures/nevo3.jpg" id="4_0oswp"]
+[ext_resource type="Texture2D" uid="uid://310rrwm8e7s3" path="res://textures/nevo4.jpg" id="5_fgyec"]
+[ext_resource type="Texture2D" uid="uid://dmj86meat00c2" path="res://textures/nevo5.jpg" id="6_3i45b"]
+[ext_resource type="Texture2D" uid="uid://cktbta0dcutcs" path="res://textures/nevo6.jpg" id="7_qjs0i"]
+[ext_resource type="Texture2D" uid="uid://c1otwswxggwgv" path="res://textures/nevo7.jpg" id="8_bjg2m"]
+[ext_resource type="Texture2D" uid="uid://ys7aneh1a6ky" path="res://textures/nevo8.jpg" id="9_nk06f"]
+[ext_resource type="Material" uid="uid://dga1vit4csfr2" path="res://shaders/vignette.tres" id="10_8jf6a"]
+[ext_resource type="AudioStream" uid="uid://dc2mmgyn4fowb" path="res://sounds/orchestra.mp3" id="11_h4rgq"]
+
+[node name="images" type="Control" unique_id=1268551173]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nv0lf")
+image_list = Array[Texture2D]([ExtResource("2_8jf6a"), ExtResource("3_h4rgq"), ExtResource("4_0oswp"), ExtResource("5_fgyec"), ExtResource("6_3i45b"), ExtResource("7_qjs0i"), ExtResource("8_bjg2m"), ExtResource("9_nk06f")])
+intensity_duration = 26.0
+min_flash_interval = 0.2
+max_flash_interval = 0.02
+
+[node name="ImageDisplay" type="TextureRect" parent="." unique_id=275796424]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VignetteOverlay" type="ColorRect" parent="." unique_id=2068845790]
+material = ExtResource("10_8jf6a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2071464103]
+stream = ExtResource("11_h4rgq")
+autoplay = true

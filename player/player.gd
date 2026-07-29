@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("up"): 
 		sprite.play("walk_back")
 	elif Input.is_action_just_released("up"): 
-		if randi_range(1,10) == 1:
+		if randi_range(1,1000) == 1:
 			sprite.play("bald")
 		else:
 			sprite.play("stand_back")
@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_pressed("down"): 
 		sprite.play("walk")
 	elif Input.is_action_just_released("down"):
-		if randi_range(1,10) == 1:
+		if randi_range(1,1000) == 1:
 			sprite.play("faceless")
 		else:
 			sprite.play("stand")
@@ -81,5 +81,4 @@ func _physics_process(delta: float) -> void:
 	if camera:
 		var dist_to_cam = global_position.distance_to(camera.global_position)
 		RenderingServer.global_shader_parameter_set("player_depth", dist_to_cam)
-		# NEW: Send the player's vertical position
 		RenderingServer.global_shader_parameter_set("player_y", global_position.y)

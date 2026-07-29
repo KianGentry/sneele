@@ -9,7 +9,7 @@ render_mode blend_mix,
 uniform bool affine_mapping = false;
 uniform sampler2D albedo : source_color, filter_nearest;
 uniform float alpha_scissor : hint_range(0, 1) = 0.6;
-uniform float jitter: hint_range(0, 1) = 0.5;
+uniform float jitter: hint_range(0, 1) = 0.8;
 uniform ivec2 resolution = ivec2(160, 120);
 
 vec4 snap_to_position(vec4 base_position)

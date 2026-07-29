@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dga1vit4csfr2"]
+
+[ext_resource type="Shader" uid="uid://c1jypgfu1g5h1" path="res://shaders/ginette.gdshader" id="1_gbuoh"]
+
+[resource]
+shader = ExtResource("1_gbuoh")
+shader_parameter/tightness = 0.0
+shader_parameter/softness = 0.5

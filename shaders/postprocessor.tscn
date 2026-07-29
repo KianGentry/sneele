@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d1ytlo23r84y7"]
+
+[ext_resource type="Shader" uid="uid://cvwnrhpd8832v" path="res://shaders/ps1post.gdshader" id="1_xbn67"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2yjle"]
+shader = ExtResource("1_xbn67")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="postprocessor" type="CanvasLayer" unique_id=1387536302]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1165194910]
+material = SubResource("ShaderMaterial_2yjle")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
