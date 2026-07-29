@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://w4l7pf2s7otb"]
+
+[ext_resource type="Script" uid="uid://d4jyle8w2yogm" path="res://epilepsy_warning.gd" id="1_6rcfs"]
+[ext_resource type="FontFile" uid="uid://dklqqatvupeiw" path="res://fonts/PetscopWide.ttf" id="2_6rcfs"]
+[ext_resource type="FontFile" uid="uid://b4u4siuy7a1ug" path="res://fonts/PanicTF.ttf" id="3_cbvu8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6rcfs"]
+font = ExtResource("2_6rcfs")
+font_color = Color(1, 0.21267998, 0.15969571, 1)
+
+[node name="EpilepsyWarning" type="Control" unique_id=517762747]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6rcfs")
+
+[node name="Timer" type="Timer" parent="." unique_id=478332803]
+wait_time = 5.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1605455029]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=919462793]
+layout_mode = 0
+offset_top = 9.0
+offset_right = 320.0
+offset_bottom = 32.0
+text = "WARNING"
+label_settings = SubResource("LabelSettings_6rcfs")
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=632803560]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 41.0
+offset_right = 304.0
+offset_bottom = 200.0
+theme_override_fonts/normal_font = ExtResource("3_cbvu8")
+text = "A small percentage of individuals may experience epileptic seizures or blackouts when exposed to certain light patterns, flashing lights, or video game backgrounds. 
+
+This can occur even in people with no prior history of seizures or epilepsy. 
+If you or anyone in your family has an epileptic condition, consult your GP before playing. 
+
+Immediately discontinue use and consult a doctor if you experience dizziness, altered vision, eye or muscle twitches, disorientation, or any involuntary movements. "
+fit_content = true
+horizontal_alignment = 1
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=683207993]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 240.0
+color = Color(0, 0, 0, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
