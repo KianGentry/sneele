@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var label: RichTextLabel = $RichTextLabel2
 @onready var npcname: RichTextLabel = $RichTextLabel
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 var lines: Array[String] = []
 var current_line: int = 0
@@ -21,6 +22,7 @@ func advance() -> void:
 		hide()
 
 func show_line() -> void:
+	animation.play("scroll")
 	label.text = lines[current_line]
 
 func is_active() -> bool:

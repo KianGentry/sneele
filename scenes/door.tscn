@@ -11,6 +11,7 @@ size = Vector3(1, 1.8710938, 0.3178711)
 size = Vector3(1, 1.883667, 0.3154297)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hpvv5"]
+height = 1.690918
 
 [node name="Door" type="StaticBody3D" unique_id=441943300]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
@@ -28,10 +29,11 @@ shape = SubResource("BoxShape3D_hpvv5")
 script = ExtResource("1_uvdjg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=739150608]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.5, 0.8, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.5, 1, 0)
 shape = SubResource("CapsuleShape3D_hpvv5")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1235219638]
 stream = ExtResource("3_83dcw")
-volume_db = -7.0
-bus = &"reverb"
+volume_db = -10.0
+max_db = 0.0
+max_distance = 7.0

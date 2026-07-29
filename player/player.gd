@@ -39,14 +39,31 @@ func _physics_process(delta: float) -> void:
 		step_timer = STEP_DELAY
 
 	# animation
-	if Input.is_action_pressed("up"): sprite.play("walk_back")
-	elif Input.is_action_just_released("up"): sprite.play("stand_back")
-	elif Input.is_action_pressed("down"): sprite.play("walk")
-	elif Input.is_action_just_released("down"): sprite.play("stand")
-	elif Input.is_action_pressed("left"): sprite.play("walk_left")
-	elif Input.is_action_just_released("left"): sprite.play("stand_left")
-	elif Input.is_action_pressed("right"): sprite.play("walk_right")
-	elif Input.is_action_just_released("right"): sprite.play("stand_right")
+	if Input.is_action_pressed("up"): 
+		sprite.play("walk_back")
+	elif Input.is_action_just_released("up"): 
+		if randi_range(1,10) == 1:
+			sprite.play("bald")
+		else:
+			sprite.play("stand_back")
+	
+	elif Input.is_action_pressed("down"): 
+		sprite.play("walk")
+	elif Input.is_action_just_released("down"):
+		if randi_range(1,10) == 1:
+			sprite.play("faceless")
+		else:
+			sprite.play("stand")
+	
+	elif Input.is_action_pressed("left"): 
+		sprite.play("walk_left")
+	elif Input.is_action_just_released("left"): 
+		sprite.play("stand_left")
+	
+	elif Input.is_action_pressed("right"): 
+		sprite.play("walk_right")
+	elif Input.is_action_just_released("right"): 
+		sprite.play("stand_right")
 
 	move_and_slide()
 	

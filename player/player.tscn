@@ -105,7 +105,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"bald",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -113,7 +113,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"faceless",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -243,8 +243,9 @@ camera = NodePath("../Camera3D")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.035381496, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2yjle")
-animation = &"walk_back"
+animation = &"faceless"
 autoplay = "stand"
+frame_progress = 0.26653665
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=891688031]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.009256929, 0)

@@ -106,22 +106,21 @@ fov = 6.6
 [node name="menuUI" type="CanvasLayer" parent="." unique_id=1870715768]
 script = ExtResource("6_h73c4")
 
-[node name="logo" type="Label" parent="menuUI" unique_id=1402036826]
-offset_left = 85.0
-offset_top = 40.0
-offset_right = 230.0
-offset_bottom = 88.0
-text = "hi"
-label_settings = SubResource("LabelSettings_2yjle")
-
-[node name="copyright" type="Label" parent="menuUI/logo" unique_id=889740259]
-layout_mode = 0
-offset_left = -57.0
-offset_top = 177.0
-offset_right = 213.0
-offset_bottom = 200.0
-text = "© BARRY ONIONS PRODUCTIONS"
+[node name="copyright" type="Label" parent="menuUI" unique_id=889740259]
+offset_left = 114.0
+offset_top = 221.0
+offset_right = 314.0
+offset_bottom = 244.0
+text = "© MUSINKS"
 label_settings = ExtResource("8_kait0")
+
+[node name="logo" type="Label" parent="menuUI" unique_id=1402036826]
+offset_left = 80.0
+offset_top = 43.0
+offset_right = 238.0
+offset_bottom = 91.0
+text = "Nevscop"
+label_settings = SubResource("LabelSettings_2yjle")
 
 [node name="Button" type="Button" parent="menuUI" unique_id=1922840454]
 offset_left = 123.0
@@ -136,7 +135,22 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = ExtResource("7_dfy5j")
 theme_override_styles/pressed = ExtResource("7_dfy5j")
 theme_override_styles/hover = ExtResource("7_dfy5j")
-text = "Press start!"
+text = "Start"
+
+[node name="Button2" type="Button" parent="menuUI" unique_id=1118205297]
+offset_left = 123.0
+offset_top = 144.0
+offset_right = 192.0
+offset_bottom = 161.0
+theme_override_colors/font_color = Color(0.58926123, 0.043580443, 0.5918512, 1)
+theme_override_colors/font_focus_color = Color(0.3703643, 0.37036455, 0.37036437, 1)
+theme_override_colors/font_hover_color = Color(0.3440754, 0.34407574, 0.34407645, 1)
+theme_override_fonts/font = ExtResource("6_85riq")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = ExtResource("7_dfy5j")
+theme_override_styles/pressed = ExtResource("7_dfy5j")
+theme_override_styles/hover = ExtResource("7_dfy5j")
+text = "Options"
 
 [node name="fade" type="ColorRect" parent="menuUI" unique_id=1496228434]
 visible = false
@@ -156,7 +170,7 @@ stream = ExtResource("12_kait0")
 
 [node name="song" type="AudioStreamPlayer" parent="." unique_id=303080816]
 stream = ExtResource("11_uui5l")
-volume_db = -10.0
+volume_db = -12.0
 autoplay = true
 parameters/looping = true
 
@@ -282,3 +296,5 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.06
 
 [connection signal="mouse_entered" from="menuUI/Button" to="menuUI" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="menuUI/Button" to="menuUI" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="menuUI/Button2" to="menuUI" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="menuUI/Button2" to="menuUI" method="_on_button_pressed"]
