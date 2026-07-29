@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cx7mp8jfornk"]
 
 [ext_resource type="Texture2D" uid="uid://dbtdmp0ipkmp0" path="res://textures/dialogue.png" id="1_mwwob"]
+[ext_resource type="Script" uid="uid://fsuc8jwdeqhr" path="res://dialogue/dialogue.gd" id="1_tmwax"]
 [ext_resource type="FontFile" uid="uid://dklqqatvupeiw" path="res://fonts/PetscopWide.ttf" id="2_tmwax"]
 [ext_resource type="FontFile" uid="uid://b4u4siuy7a1ug" path="res://fonts/PanicTF.ttf" id="3_8y0mt"]
 
@@ -10,13 +11,13 @@ default_font_size = 16
 
 [sub_resource type="Theme" id="Theme_fv3l2"]
 default_font = ExtResource("3_8y0mt")
-default_font_size = 14
+default_font_size = 16
 
 [sub_resource type="Animation" id="Animation_ru11m"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("RichTextLabel2:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -49,17 +50,13 @@ _data = {
 &"scroll": SubResource("Animation_a31il")
 }
 
-[node name="dialogue" type="Control" unique_id=1226244576]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="dialogue" type="CanvasLayer" unique_id=568614671]
+layer = 3
+visible = false
+script = ExtResource("1_tmwax")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1702381032]
 texture_filter = 1
-layout_mode = 0
 offset_left = 24.0
 offset_top = 152.0
 offset_right = 302.0
@@ -67,7 +64,6 @@ offset_bottom = 235.0
 texture = ExtResource("1_mwwob")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=946637805]
-layout_mode = 0
 offset_left = 38.0
 offset_top = 153.0
 offset_right = 311.0
@@ -76,7 +72,6 @@ theme = SubResource("Theme_2yjle")
 text = "name"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=582038876]
-layout_mode = 0
 offset_left = 38.0
 offset_top = 166.0
 offset_right = 290.0

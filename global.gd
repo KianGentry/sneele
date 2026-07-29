@@ -1,6 +1,7 @@
 extends Node
 
 var level: int = 0
+var inventory: Array = []
 
 signal score_changed(new_score)
 var score: int = 0:

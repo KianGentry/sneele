@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if "CharacterBody3D" in body.name or "CharacterBody" in body.name:
+	if body.is_in_group("player"):
 		# Disable monitoring immediately so this trigger only fires once
 		set_deferred("monitoring", false)
 	

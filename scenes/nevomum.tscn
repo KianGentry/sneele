@@ -1,61 +1,63 @@
 [gd_scene format=3 uid="uid://bnfsq3xtakk7i"]
 
 [ext_resource type="Script" uid="uid://cstgex4en0agh" path="res://scenes/nevomum.gd" id="1_ni51f"]
-[ext_resource type="Texture2D" uid="uid://smu77845o80" path="res://textures/placeholder.png" id="1_oq34c"]
+[ext_resource type="Texture2D" uid="uid://b7raenyeu07ha" path="res://textures/mum.png" id="2_gjfhi"]
 [ext_resource type="PackedScene" uid="uid://cx7mp8jfornk" path="res://dialogue/dialogue.tscn" id="3_gjfhi"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ni51f"]
-atlas = ExtResource("1_oq34c")
-region = Rect2(0, 0, 25, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nbgd"]
+atlas = ExtResource("2_gjfhi")
+region = Rect2(0, 0, 32, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gjfhi"]
-atlas = ExtResource("1_oq34c")
-region = Rect2(25, 0, 25, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gmu8"]
+atlas = ExtResource("2_gjfhi")
+region = Rect2(32, 0, 32, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fv3l2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ni51f")
+"texture": SubResource("AtlasTexture_3nbgd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gjfhi")
+"texture": SubResource("AtlasTexture_8gmu8")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 2.0
+"speed": 1.5
 }]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2yjle"]
-size = Vector3(0.7093506, 0.86621094, 0.690979)
+size = Vector3(0.42259216, 0.91503906, 0.39149475)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2yjle"]
 
 [node name="nevomum" type="Node3D" unique_id=1682060934]
 script = ExtResource("1_ni51f")
-dialogues = Array[String](["hello"])
+character_name = "nevos sexy slim mam"
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1815674004]
-transform = Transform3D(3.0315015, 0, 0, 0, 3.0315015, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)
 billboard = 2
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fv3l2")
 autoplay = "default"
-frame_progress = 0.551205
+frame_progress = 0.4052233
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1842918551]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=750515086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0026245117, 0.06689453, -0.00064086914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015419006, 0.04248047, 0.014549255)
 shape = SubResource("BoxShape3D_2yjle")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=608847594]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1408281573]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("SphereShape3D_2yjle")
 
 [node name="dialogue" parent="." unique_id=1226244576 instance=ExtResource("3_gjfhi")]
-visible = false
-z_index = 5
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

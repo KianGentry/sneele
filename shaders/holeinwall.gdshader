@@ -6,11 +6,11 @@ uniform sampler2D albedo_texture : source_color, filter_nearest;
 global uniform float player_depth;
 global uniform float player_y; 
 
-uniform float cutout_radius : hint_range(0.0, 2.0) = 0.35;
+uniform float cutout_radius : hint_range(0.0, 2.0) = 0.3;
 uniform float feather : hint_range(0.0, 1.0) = 0.1;
 uniform float depth_margin : hint_range(-2.0, 2.0) = 0.0; 
 uniform float ground_margin : hint_range(-2.0, 2.0) = 0.0; 
-uniform float floor_threshold : hint_range(0.0, 1.0) = 0.5;
+uniform float floor_threshold : hint_range(0.0, 1.0) = 0.1;
 
 // NEW: How directly the wall must face the camera to be cut. 
 // 0.0 = cuts all walls, 1.0 = cuts ONLY walls facing the camera perfectly flat.

@@ -1,20 +1,33 @@
 extends Node3D
 
-@onready var dialogue_ui = $dialogue
-@onready var dialogue_animation = $dialogue/AnimationPlayer
-@onready var speaker_name: RichTextLabel = $dialogue/RichTextLabel
-@onready var dialogue_text: RichTextLabel = $dialogue/RichTextLabel2
+@onready var dialogue: CanvasLayer = $dialogue
+@export var character_name: String = "NPC"
 
-@export var dialogues: Array[String]
+# Type your NPC's dialogue directly in the Godot inspector list!
+@export var lines: Array[String] = [
+	"Hi",
+	"hello",
+	"and goodbye."
+]
 
-var current_dialogue = 0
-var started = false
+var player_in_area: bool = false
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if Input.is_action_just_pressed("use"):
-		current_dialogue += 1
-		dialogue_ui.visible = true
-		dialogue_text.text = dialogues[current_dialogue]
-		speaker_name.text = "Nevo's Mum"
-		dialogue_animation.play("RESET")
-		dialogue_animation.play("scroll")
+	if body.is_in_group("player"):
+		player_in_area = true
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		player_in_area = false
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("use"):
+		
+		if dialogue.is_active():
+			dialogue.advance()
+			get_viewport().set_input_as_handled()
+			
+		elif player_in_area:
+			# Pass character_name along with lines here
+			dialogue.start_dialogue(character_name, lines)
+			get_viewport().set_input_as_handled()
