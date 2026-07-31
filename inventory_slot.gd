@@ -2,7 +2,7 @@ class_name InventorySlot
 extends Control
 
 @onready var icon_rect: TextureRect = $TextureRect 
-@onready var focus_border: ReferenceRect = $FocusBorder
+@onready var focus_border: ReferenceRect = $TextureRect/FocusBorder
 
 func _ready() -> void:
 	focus_mode = Control.FOCUS_ALL 

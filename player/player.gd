@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		step_timer = STEP_DELAY
 
-	# animation
+	# player animation
 	if Input.is_action_pressed("up"): 
 		sprite.play("walk_back")
 	elif Input.is_action_just_released("up"): 
@@ -70,6 +70,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	# inventory input
 	if Input.is_action_just_pressed("inv"):
 		if InventoryManager.is_empty() == false:
 			if ui.is_playing == false:
@@ -78,7 +79,6 @@ func _physics_process(delta: float) -> void:
 					ui.is_playing = true
 					inv_open = true
 					
-					# Tell the inventory to reset the cursor to the top-left item
 					ui.inventory_ui.open_menu() 
 				else:
 					ui.is_playing = true

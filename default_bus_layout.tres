@@ -1,0 +1,16 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://d3a4uqtvkhu0s"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
+resource_name = "EQ"
+band_db/3200_hz = -23.3
+band_db/10000_hz = -29.6
+
+[resource]
+bus/1/name = &"coin"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectEQ_j3pel")
+bus/1/effect/0/enabled = true

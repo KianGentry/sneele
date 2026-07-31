@@ -25,8 +25,7 @@ grow_vertical = 2
 script = ExtResource("1_nv0lf")
 image_list = Array[Texture2D]([ExtResource("2_8jf6a"), ExtResource("3_h4rgq"), ExtResource("4_0oswp"), ExtResource("5_fgyec"), ExtResource("6_3i45b"), ExtResource("7_qjs0i"), ExtResource("8_bjg2m"), ExtResource("9_nk06f"), ExtResource("10_3i45b"), ExtResource("11_qjs0i")])
 intensity_duration = 26.0
-min_flash_interval = 0.3
-max_flash_interval = 0.01
+min_flash_interval = 0.25
 
 [node name="ImageDisplay" type="TextureRect" parent="." unique_id=275796424]
 layout_mode = 1

@@ -3,15 +3,15 @@ extends Control
 @export var slot_scene: PackedScene
 
 @onready var slot_container: GridContainer = $GridContainer
-@onready var name_label: Label = $NameLabel # Create a Label node at the bottom of this scene
+@onready var name_label: Label = $NameLabel
 
 func _ready() -> void:
 	InventoryManager.inventory_updated.connect(refresh_inventory)
-	name_label.text = "" # Start empty
+	name_label.text = ""
 	refresh_inventory()
 
 func refresh_inventory() -> void:
-	# Clear old slots
+
 	for child in slot_container.get_children():
 		child.queue_free()
 	

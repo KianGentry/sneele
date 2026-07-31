@@ -9,19 +9,20 @@ offset_right = 50.0
 offset_bottom = 50.0
 script = ExtResource("1_dxvxp")
 
-[node name="FocusBorder" type="ReferenceRect" parent="." unique_id=1905708890]
-layout_mode = 0
-offset_right = 50.0
-offset_bottom = 50.0
-border_color = Color(1, 1, 1, 1)
-border_width = 2.0
-editor_only = false
-
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1891624248]
 layout_mode = 0
 offset_right = 50.0
 offset_bottom = 50.0
 size_flags_horizontal = 0
 
-[connection signal="focus_entered" from="FocusBorder" to="." method="_on_focus_entered"]
-[connection signal="focus_exited" from="FocusBorder" to="." method="_on_focus_exited"]
+[node name="FocusBorder" type="ReferenceRect" parent="TextureRect" unique_id=1905708890]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+focus_mode = 2
+border_color = Color(1, 1, 1, 1)
+border_width = 4.0
+editor_only = false
+
+[connection signal="focus_entered" from="TextureRect/FocusBorder" to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="TextureRect/FocusBorder" to="." method="_on_focus_exited"]

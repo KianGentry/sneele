@@ -261,6 +261,8 @@ texture = SubResource("PlaceholderTexture2D_2yjle")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="TextureRect2" unique_id=1334508458]
 stream = ExtResource("3_5s30g")
 
+[node name="welldone" type="AudioStreamPlayer" parent="TextureRect2" unique_id=1547335320]
+
 [node name="Timer" type="Timer" parent="." unique_id=1642986319]
 wait_time = 2.0
 
