@@ -11,6 +11,9 @@ var step_timer: float = 0.0
 @export var camera: Camera3D
 @onready var sound = $AudioStreamPlayer3D
 @onready var sprite = $AnimatedSprite3D
+@onready var player = self
+@onready var inv_open = false
+@onready var ui: CanvasLayer = $"../UI"
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -67,6 +70,22 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("inv"):
+		if InventoryManager.is_empty() == false:
+			if ui.is_playing == false:
+				if inv_open == false:
+					ui.animation.play("slide")
+					ui.is_playing = true
+					inv_open = true
+					
+					# Tell the inventory to reset the cursor to the top-left item
+					ui.inventory_ui.open_menu() 
+				else:
+					ui.is_playing = true
+					ui.animation.play("slide_back")
+					inv_open = false
+					ui.inventory_ui.close_menu()
+	
 	# pushing stuff logic
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
@@ -77,6 +96,12 @@ func _physics_process(delta: float) -> void:
 			push_dir = push_dir.normalized()
 			var force = push_dir * SPEED * push_force
 			collider.apply_central_impulse(force)
+
+	var screen_pos = camera.unproject_position(player.global_position)
+	var viewport_size = get_viewport().get_visible_rect().size
+	# Calculate offset from center normalized to -0.5 to 0.5
+	var offset = (screen_pos / viewport_size) - Vector2(0.5, 0.5)
+	RenderingServer.global_shader_parameter_set("player_screen_offset", offset)
 
 	if camera:
 		var dist_to_cam = global_position.distance_to(camera.global_position)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cliho5kpoiosx"
+path="res://.godot/imported/Creepy sound effect.wav-c0aa8c02be7b8ed559180de0873aebce.sample"
+
+[deps]
+
+source_file="res://sounds/Creepy sound effect.wav"
+dest_files=["res://.godot/imported/Creepy sound effect.wav-c0aa8c02be7b8ed559180de0873aebce.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

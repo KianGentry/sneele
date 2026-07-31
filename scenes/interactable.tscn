@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bqxhrucjoatc1"]
+
+[ext_resource type="Script" uid="uid://byr2px2teehrs" path="res://scenes/interactable.gd" id="1_w4xns"]
+[ext_resource type="AudioStream" uid="uid://du1bh1s4ac7ld" path="res://sounds/flush.mp3" id="2_8o6w2"]
+[ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="3_w4xns"]
+[ext_resource type="Texture2D" uid="uid://bo6cqkvi4dld7" path="res://textures/usebox.png" id="4_w4xns"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2yjle"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lo7ue"]
+radius = 2.0180874
+
+[node name="Interactable" type="Area3D" unique_id=1879840039]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_w4xns")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=435585994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30382162, 0)
+shape = SubResource("SphereShape3D_2yjle")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=599879065]
+stream = ExtResource("2_8o6w2")
+volume_db = -3.0
+max_distance = 8.0
+
+[node name="Timer" type="Timer" parent="." unique_id=775151619]
+wait_time = 3.0
+
+[node name="usebox" type="Area3D" parent="." unique_id=1935183440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.765072, 0)
+script = ExtResource("3_w4xns")
+max_distance = 1.0
+min_distance = 0.1
+min_scale = Vector3(0, 0, 0)
+max_scale = Vector3(1, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="usebox" unique_id=74544369]
+shape = SubResource("SphereShape3D_lo7ue")
+
+[node name="Sprite3D" type="Sprite3D" parent="usebox" unique_id=1934359447]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_w4xns")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="usebox" to="usebox" method="_on_body_entered"]
+[connection signal="body_exited" from="usebox" to="usebox" method="_on_body_exited"]

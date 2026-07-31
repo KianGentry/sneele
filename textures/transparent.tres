@@ -1,7 +1,10 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://xivyo5oiqj7s"]
 
+[ext_resource type="Texture2D" uid="uid://du6702bepkr3x" path="res://textures/transparent.png" id="1_r6bxj"]
+
 [resource]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("1_r6bxj")
 metallic_specular = 0.0
 texture_filter = 2

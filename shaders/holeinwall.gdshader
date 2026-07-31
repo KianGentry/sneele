@@ -2,7 +2,7 @@ shader_type spatial;
 
 render_mode blend_mix, 
     cull_disabled, 
-    depth_prepass_alpha, 
+    depth_draw_opaque, 
     shadows_disabled, 
     specular_disabled, 
     vertex_lighting;
@@ -16,14 +16,15 @@ uniform ivec2 resolution = ivec2(160, 120);
 
 // CUTOUT UNIFORMS
 global uniform float player_depth;
-global uniform float player_y; 
+global uniform float player_y;
+global uniform vec2 player_screen_offset;
 
 uniform float cutout_radius : hint_range(0.0, 2.0) = 0.3;
 uniform float feather : hint_range(0.0, 1.0) = 0.1;
 uniform float depth_margin : hint_range(-2.0, 2.0) = 0.0; 
 uniform float ground_margin : hint_range(-2.0, 2.0) = 0.0; 
-uniform float floor_threshold : hint_range(0.0, 1.0) = 0.5;
-uniform float facing_threshold : hint_range(0.0, 1.0) = 0.5; 
+uniform float floor_threshold : hint_range(0.0, 1.0) = 0.1;
+uniform float facing_threshold : hint_range(0.0, 1.0) = 0.4; 
 
 // DITHERING
 const mat4 dither_table = mat4(
@@ -100,7 +101,8 @@ void fragment() {
     if (frag_distance < (player_depth + depth_margin) && !is_ground && is_facing_camera) {
         
         float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
-        vec2 center_uv = SCREEN_UV - vec2(0.5, 0.5);
+        vec2 screen_center = vec2(0.5, 0.5) + player_screen_offset;
+        vec2 center_uv = SCREEN_UV - screen_center;
         center_uv.x *= aspect;
 
         float dist_from_center = length(center_uv);

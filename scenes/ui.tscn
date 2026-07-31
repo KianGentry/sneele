@@ -2,16 +2,107 @@
 
 [ext_resource type="Script" uid="uid://jxm1w8ws1suf" path="res://scenes/ui.gd" id="1_nt7q6"]
 [ext_resource type="LabelSettings" uid="uid://d4ealo2qidxtd" path="res://scenes/labelWide.tres" id="2_x4jx1"]
+[ext_resource type="PackedScene" uid="uid://b34hi5mi8300r" path="res://scenes/inventory_ui.tscn" id="2_yev5y"]
+
+[sub_resource type="Animation" id="Animation_yev5y"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("inventory:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(320, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("inventory:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_gdt2y"]
+resource_name = "slide"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("inventory:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(320, -0.25, 0, 0.25, 0, 0, -0.16666667, 53.333336, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("inventory:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_wm3ai"]
+resource_name = "slide_back"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("inventory:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 320, -0.16666667, -53.333336, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("inventory:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8dubc"]
+_data = {
+&"RESET": SubResource("Animation_yev5y"),
+&"slide": SubResource("Animation_gdt2y"),
+&"slide_back": SubResource("Animation_wm3ai")
+}
 
 [node name="UI" type="CanvasLayer" unique_id=853805307]
 script = ExtResource("1_nt7q6")
 
+[node name="inventory" parent="." unique_id=382744210 instance=ExtResource("2_yev5y")]
+offset_left = 320.0
+offset_right = 320.0
+mouse_filter = 2
+
 [node name="score" type="Label" parent="." unique_id=689480360]
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 label_settings = ExtResource("2_x4jx1")
 
 [node name="scoreTimer" type="Timer" parent="." unique_id=1843859830]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1601710461]
+libraries/ = SubResource("AnimationLibrary_8dubc")
+
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

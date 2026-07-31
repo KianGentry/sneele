@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bruvxh48gsapw"]
+
+[ext_resource type="Script" uid="uid://cki063ofhq2qm" path="res://jamie.gd" id="1_6w1q6"]
+[ext_resource type="Texture2D" uid="uid://bmalrwqh335l4" path="res://textures/jamie.png" id="2_cxw6r"]
+[ext_resource type="PackedScene" uid="uid://bbaxe4rob2u4a" path="res://scenes/dialoguebox.tscn" id="2_nq2en"]
+[ext_resource type="PackedScene" uid="uid://cx7mp8jfornk" path="res://dialogue/dialogue.tscn" id="3_nq2en"]
+[ext_resource type="AudioStream" uid="uid://bsiphm18lvyna" path="res://sounds/jamiesound.mp3" id="5_nq2en"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0gin"]
+atlas = ExtResource("2_cxw6r")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2ki2"]
+atlas = ExtResource("2_cxw6r")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_461ij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0gin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2ki2")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hb6na"]
+size = Vector3(0.42259216, 0.91503906, 0.39149475)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eu7n4"]
+
+[node name="jamie" type="Node3D" unique_id=1805659340]
+script = ExtResource("1_6w1q6")
+character_name = "Jamie"
+lines = Array[String](["Hi", "Can we get a chinese?", "Please?"])
+
+[node name="dialoguebox" parent="." unique_id=1935183440 instance=ExtResource("2_nq2en")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9913556, 0)
+max_distance = 6.0
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1237404017]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_461ij")
+autoplay = "default"
+frame_progress = 0.45586103
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=241642098]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1230959189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015419006, 0.04248047, 0.014549255)
+shape = SubResource("BoxShape3D_hb6na")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=125521754]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=831177770]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("SphereShape3D_eu7n4")
+
+[node name="dialogue" parent="." unique_id=568614671 node_paths=PackedStringArray("blip_player") instance=ExtResource("3_nq2en")]
+blip_player = NodePath("../AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1078789424]
+stream = ExtResource("5_nq2en")
+volume_db = -4.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

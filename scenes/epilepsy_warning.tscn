@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d4jyle8w2yogm" path="res://epilepsy_warning.gd" id="1_6rcfs"]
 [ext_resource type="FontFile" uid="uid://dklqqatvupeiw" path="res://fonts/PetscopWide.ttf" id="2_6rcfs"]
+[ext_resource type="PackedScene" uid="uid://d1ytlo23r84y7" path="res://shaders/postprocessor.tscn" id="2_kst02"]
 [ext_resource type="FontFile" uid="uid://b4u4siuy7a1ug" path="res://fonts/PanicTF.ttf" id="3_cbvu8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6rcfs"]
@@ -16,6 +17,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6rcfs")
+
+[node name="postprocessor" parent="." unique_id=1387536302 instance=ExtResource("2_kst02")]
+layer = 5
 
 [node name="Timer" type="Timer" parent="." unique_id=478332803]
 wait_time = 5.0

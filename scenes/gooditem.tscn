@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://i6ibhk3iffeq"]
+
+[ext_resource type="Texture2D" uid="uid://b4q1bh1inrg1f" path="res://textures/skull1.png" id="1_drnut"]
+[ext_resource type="Script" uid="uid://bu4rva3sxetr7" path="res://scenes/gooditem.gd" id="1_v3rev"]
+[ext_resource type="AudioStream" uid="uid://clxj67i318xqh" path="res://sounds/coin2.wav" id="2_v3rev"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_81lbi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_efljt"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ht0t6"]
+playback_mode = 1
+random_pitch = 1.0293022
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("2_v3rev")
+
+[node name="gooditem" type="Node3D" unique_id=583556381]
+script = ExtResource("1_v3rev")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=586111542]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1365041232]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+shape = SubResource("SphereShape3D_81lbi")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=867503980]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("1_drnut")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=403811748]
+mass = 0.05
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1907260204]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_efljt")
+disabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1711986300]
+stream = SubResource("AudioStreamRandomizer_ht0t6")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

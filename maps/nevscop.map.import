@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://cw7vwdhqsf4wr"
+path="res://.godot/imported/nevscop.map-259d9ecc170a9e9de27cf0479c4adbdd.tres"
+
+[deps]
+
+source_file="res://maps/nevscop.map"
+dest_files=["res://.godot/imported/nevscop.map-259d9ecc170a9e9de27cf0479c4adbdd.tres"]
+
+[params]
+

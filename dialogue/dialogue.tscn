@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://fsuc8jwdeqhr" path="res://dialogue/dialogue.gd" id="1_tmwax"]
 [ext_resource type="FontFile" uid="uid://dklqqatvupeiw" path="res://fonts/PetscopWide.ttf" id="2_tmwax"]
 [ext_resource type="FontFile" uid="uid://b4u4siuy7a1ug" path="res://fonts/PanicTF.ttf" id="3_8y0mt"]
+[ext_resource type="AudioStream" uid="uid://bsiphm18lvyna" path="res://sounds/jamiesound.mp3" id="5_8y0mt"]
 
 [sub_resource type="Theme" id="Theme_2yjle"]
 default_font = ExtResource("2_tmwax")
@@ -56,26 +57,32 @@ script = ExtResource("1_tmwax")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1702381032]
 texture_filter = 1
-offset_left = 24.0
-offset_top = 152.0
-offset_right = 302.0
+offset_left = 28.0
+offset_top = 144.0
+offset_right = 295.0
 offset_bottom = 235.0
 texture = ExtResource("1_mwwob")
+expand_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=946637805]
-offset_left = 38.0
-offset_top = 153.0
-offset_right = 311.0
-offset_bottom = 180.0
+texture_filter = 1
+offset_left = 47.0
+offset_top = 148.0
+offset_right = 276.0
+offset_bottom = 164.0
 theme = SubResource("Theme_2yjle")
-text = "name"
+theme_override_colors/font_outline_color = Color(0.46618086, 0.4661808, 0.4661808, 1)
+theme_override_constants/outline_size = 4
+text = "Jamie"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=582038876]
-offset_left = 38.0
+texture_filter = 1
+offset_left = 51.0
 offset_top = 166.0
-offset_right = 290.0
-offset_bottom = 230.0
+offset_right = 273.0
+offset_bottom = 224.0
 theme = SubResource("Theme_fv3l2")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "test"
 scroll_active = false
 scroll_following = true
@@ -85,3 +92,11 @@ visible_ratio = 0.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=720576453]
 libraries/ = SubResource("AnimationLibrary_7ueb4")
 speed_scale = 1.5
+
+[node name="Timer" type="Timer" parent="." unique_id=1532995285]
+wait_time = 0.09
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1840309047]
+stream = ExtResource("5_8y0mt")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

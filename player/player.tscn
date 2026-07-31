@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ioukfdhtavyu"]
 
 [ext_resource type="Script" uid="uid://gh3u7grkvoi0" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://dudfddqlc4bkl" path="res://textures/shadow.png" id="2_8t03j"]
 [ext_resource type="Script" uid="uid://dnulbbunft1aa" path="res://player/camera.gd" id="2_g1dw6"]
 [ext_resource type="Texture2D" uid="uid://rg7xq4cl7466" path="res://textures/nevo.png" id="2_hg6s5"]
 [ext_resource type="AudioStream" uid="uid://5dhs66kj0tmy" path="res://sounds/footsteps/footstep1.mp3" id="4_boad6"]
@@ -239,13 +240,17 @@ platform_on_leave = 2
 script = ExtResource("1_rkbax")
 camera = NodePath("../Camera3D")
 
+[node name="Decal" type="Decal" parent="CharacterBody3D" unique_id=486156464]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.24181062, -0.05240847)
+size = Vector3(0.5, 0.1, 0.5)
+texture_albedo = ExtResource("2_8t03j")
+
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=877568716]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.035381496, 0)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2yjle")
-animation = &"faceless"
+animation = &"stand"
 autoplay = "stand"
-frame_progress = 0.26653665
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=891688031]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.009256929, 0)

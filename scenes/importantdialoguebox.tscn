@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cvfy271t6b613"]
+
+[ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="1_cweoo"]
+[ext_resource type="Texture2D" uid="uid://bcw1mkig5ke4a" path="res://textures/dialoguebox.png" id="2_j8883"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2yjle"]
+radius = 4.0
+
+[node name="importantdialoguebox" type="Area3D" unique_id=1935183440]
+script = ExtResource("1_cweoo")
+max_distance = 4.0
+min_distance = 0.0
+max_scale = Vector3(2.5, 2.5, 2.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=74544369]
+shape = SubResource("SphereShape3D_2yjle")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1934359447]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+modulate = Color(1, 0.34117648, 1, 1)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_j8883")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

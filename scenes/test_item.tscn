@@ -2,10 +2,18 @@
 
 [ext_resource type="Script" uid="uid://c6e23ovf0muh1" path="res://scenes/test_item.gd" id="1_fsxny"]
 [ext_resource type="Texture2D" uid="uid://d6ikiv6s8mly" path="res://textures/skull.png" id="2_diu5i"]
+[ext_resource type="AudioStream" uid="uid://by20tmgmv37uo" path="res://sounds/coin1.wav" id="3_ouviq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vretf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m8bsq"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2yjle"]
+playback_mode = 1
+random_pitch = 1.0293022
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("3_ouviq")
 
 [node name="testItem" type="Node3D" unique_id=1845204243]
 script = ExtResource("1_fsxny")
@@ -30,4 +38,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("BoxShape3D_m8bsq")
 disabled = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1927814513]
+stream = SubResource("AudioStreamRandomizer_2yjle")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

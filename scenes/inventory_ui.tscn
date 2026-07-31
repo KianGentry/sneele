@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b34hi5mi8300r"]
+
+[ext_resource type="Script" uid="uid://bjn7tn2igi4u" path="res://inventory_ui.gd" id="1_tahbm"]
+[ext_resource type="PackedScene" uid="uid://bruc60kibi8hm" path="res://scenes/inventory_slot.tscn" id="2_ylkvr"]
+[ext_resource type="FontFile" uid="uid://b4u4siuy7a1ug" path="res://fonts/PanicTF.ttf" id="3_mdwe3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fsdjo"]
+font = ExtResource("3_mdwe3")
+font_size = 24
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" unique_id=382744210]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tahbm")
+slot_scene = ExtResource("2_ylkvr")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=312132468]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="." unique_id=1316433766]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Test"
+label_settings = SubResource("LabelSettings_fsdjo")
+horizontal_alignment = 1

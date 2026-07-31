@@ -9,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://cktbta0dcutcs" path="res://textures/nevo6.jpg" id="7_qjs0i"]
 [ext_resource type="Texture2D" uid="uid://c1otwswxggwgv" path="res://textures/nevo7.jpg" id="8_bjg2m"]
 [ext_resource type="Texture2D" uid="uid://ys7aneh1a6ky" path="res://textures/nevo8.jpg" id="9_nk06f"]
+[ext_resource type="Texture2D" uid="uid://qxfy3n1tw4hi" path="res://textures/nevo9.jpg" id="10_3i45b"]
 [ext_resource type="Material" uid="uid://dga1vit4csfr2" path="res://shaders/vignette.tres" id="10_8jf6a"]
 [ext_resource type="AudioStream" uid="uid://dc2mmgyn4fowb" path="res://sounds/orchestra.mp3" id="11_h4rgq"]
+[ext_resource type="Texture2D" uid="uid://cd1ebb14mhqgk" path="res://textures/nevo10.jpg" id="11_qjs0i"]
+[ext_resource type="PackedScene" uid="uid://d1ytlo23r84y7" path="res://shaders/postprocessor.tscn" id="12_0oswp"]
 
 [node name="images" type="Control" unique_id=1268551173]
 layout_mode = 3
@@ -20,10 +23,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nv0lf")
-image_list = Array[Texture2D]([ExtResource("2_8jf6a"), ExtResource("3_h4rgq"), ExtResource("4_0oswp"), ExtResource("5_fgyec"), ExtResource("6_3i45b"), ExtResource("7_qjs0i"), ExtResource("8_bjg2m"), ExtResource("9_nk06f")])
+image_list = Array[Texture2D]([ExtResource("2_8jf6a"), ExtResource("3_h4rgq"), ExtResource("4_0oswp"), ExtResource("5_fgyec"), ExtResource("6_3i45b"), ExtResource("7_qjs0i"), ExtResource("8_bjg2m"), ExtResource("9_nk06f"), ExtResource("10_3i45b"), ExtResource("11_qjs0i")])
 intensity_duration = 26.0
-min_flash_interval = 0.2
-max_flash_interval = 0.02
+min_flash_interval = 0.3
+max_flash_interval = 0.01
 
 [node name="ImageDisplay" type="TextureRect" parent="." unique_id=275796424]
 layout_mode = 1
@@ -45,3 +48,5 @@ grow_vertical = 2
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2071464103]
 stream = ExtResource("11_h4rgq")
 autoplay = true
+
+[node name="postprocessor" parent="." unique_id=1387536302 instance=ExtResource("12_0oswp")]
