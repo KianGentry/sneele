@@ -271,12 +271,12 @@ current = true
 fov = 6.6
 
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="Camera3D" unique_id=215617495]
-transform = Transform3D(-0.0074236663, -0.0025593243, 0.039221633, 0.035657164, -0.017231602, 0.00562459, 0.016536428, 0.036007196, 0.0054795034, -0.18554166, 0.15961224, -5.5119505)
+transform = Transform3D(-0.0074236663, -0.002559324, 0.039221633, 0.035657164, -0.0172316, 0.00562459, 0.016536428, 0.036007196, 0.0054795034, -0.18554166, 0.15961224, -5.5119505)
 mesh = SubResource("ArrayMesh_prb5i")
 surface_material_override/0 = SubResource("StandardMaterial3D_nkpmc")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D" unique_id=788393968]
-transform = Transform3D(0.7727409, 0.20190473, 0.045893572, -0.20188418, 0.77408254, -0.0062494925, -0.045984022, -0.0055449335, 0.7986581, 1.3288647e-15, 0.20408298, -7.60421)
+transform = Transform3D(0.7727409, 0.20190473, 0.045893572, -0.2018842, 0.77408254, -0.0062494925, -0.045984026, -0.0055449335, 0.7986581, 1.3288647e-15, 0.20408298, -7.60421)
 texture_filter = 0
 texture = ExtResource("5_nkpmc")
 

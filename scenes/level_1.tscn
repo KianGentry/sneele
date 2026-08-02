@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://d1ytlo23r84y7" path="res://shaders/postprocessor.tscn" id="36_q0ron"]
 [ext_resource type="PackedScene" uid="uid://bqxhrucjoatc1" path="res://scenes/interactable.tscn" id="36_tdlki"]
 [ext_resource type="PackedScene" uid="uid://i6ibhk3iffeq" path="res://scenes/gooditem.tscn" id="37_tdlki"]
+[ext_resource type="Script" uid="uid://dad511v5754ne" path="res://scenes/toilet.gd" id="37_wa552"]
 [ext_resource type="PackedScene" uid="uid://bruvxh48gsapw" path="res://scenes/jamie.tscn" id="38_v8pws"]
 [ext_resource type="Script" uid="uid://b1d8ygi56dpc1" path="res://scenes/item_data.gd" id="38_wom8k"]
 [ext_resource type="Texture2D" uid="uid://dy64t2bhd1e4p" path="res://textures/dildoblurred.png" id="39_wa552"]
@@ -1193,10 +1194,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.252161, 13.205581, 11.907
 
 [node name="Toilet" parent="Interactions" unique_id=1879840039 instance=ExtResource("36_tdlki")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.672947, 11.729413, 6.695327)
+script = ExtResource("37_wa552")
 
-[node name="postprocessor" parent="." unique_id=1387536302 instance=ExtResource("36_q0ron")]
-
-[node name="Interactable" parent="." unique_id=1082131188 instance=ExtResource("36_tdlki")]
+[node name="Interactable" parent="Interactions" unique_id=1082131188 instance=ExtResource("36_tdlki")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.01094, 11.812664, 12.226221)
 item = SubResource("Resource_tdlki")
 item_get_scene = ExtResource("40_v0i6o")
+
+[node name="postprocessor" parent="." unique_id=1387536302 instance=ExtResource("36_q0ron")]

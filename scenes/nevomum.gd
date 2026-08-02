@@ -3,7 +3,6 @@ extends Node3D
 @onready var dialogue: CanvasLayer = $dialogue
 @export var character_name: String = "NPC"
 
-# Type your NPC's dialogue directly in the Godot inspector list!
 @export var lines: Array[String] = [
 	"Hi",
 	"hello",
@@ -31,6 +30,6 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			
 		elif player_in_area:
-			# Pass character_name along with lines here
+			ObjectiveManager.complete_objective("speak_to_mum")
 			dialogue.start_dialogue(character_name, lines)
 			get_viewport().set_input_as_handled()

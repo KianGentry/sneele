@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var sound: AudioStreamPlayer = $AudioStreamPlayer
 @onready var sprite: Sprite3D = $Sprite3D
+@onready var ding: AudioStreamPlayer = $AudioStreamPlayer2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +21,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			
 			sprite.visible = false
 			sound.play()
+			ding.play()
 			Global.score += 1
 		else:
 			return

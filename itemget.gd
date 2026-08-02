@@ -4,6 +4,9 @@ extends Control
 @onready var texturerect: TextureRect = $TextureRect2/TextureRect
 @onready var animation: AnimationPlayer = $TextureRect2/AnimationPlayer
 @onready var timer: Timer = $Timer
+@onready var sound: AudioStreamPlayer = $TextureRect2/AudioStreamPlayer
+@onready var welldonetimer: Timer = $TextureRect2/Timer
+@onready var welldone: AudioStreamPlayer = $TextureRect2/welldone
 
 func _ready() -> void:
 	pass
@@ -15,10 +18,10 @@ func setup_reveal(item: ItemData) -> void:
 		InventoryManager.add_item(item)
 
 	if animation.has_animation("labelfall"):
+		sound.play()
+		welldonetimer.start()
 		container.modulate.a = 1.0
 		animation.play("labelfall")
-	else:
-		push_warning("Animation 'labelfall' not found on AnimationPlayer!")
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "labelfall":
@@ -32,3 +35,7 @@ func fade_and_destroy() -> void:
 
 func _on_timer_timeout():
 	fade_and_destroy()
+
+
+func _on_welldonetimer_timeout() -> void:
+	welldone.play()

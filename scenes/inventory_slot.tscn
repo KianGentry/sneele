@@ -5,9 +5,15 @@
 [node name="PanelContainer" type="Control" unique_id=1316038021]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_right = 54.0
+offset_bottom = 54.0
 script = ExtResource("1_dxvxp")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=521380083]
+texture_filter = 1
+layout_mode = 0
+offset_right = 54.0
+offset_bottom = 54.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1891624248]
 layout_mode = 0
@@ -16,9 +22,12 @@ offset_bottom = 50.0
 size_flags_horizontal = 0
 
 [node name="FocusBorder" type="ReferenceRect" parent="TextureRect" unique_id=1905708890]
+texture_filter = 1
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 52.0
+offset_bottom = 52.0
 focus_mode = 2
 border_color = Color(1, 1, 1, 1)
 border_width = 4.0

@@ -6,6 +6,11 @@ extends Node3D
 @export var ignore_textures: Array[String] = []
 
 func _ready() -> void:
+	ObjectiveManager.add_objective(
+		"Speak to Mum",
+		"Go to your mum's room and speak to her.",
+		true
+	)
 	_apply_shader_to_children(self)
 
 func _apply_shader_to_children(node: Node) -> void:

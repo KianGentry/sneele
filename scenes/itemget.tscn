@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cstt5nnsvfxat" path="res://itemget.gd" id="1_c1q62"]
 [ext_resource type="FontFile" uid="uid://37xnf1trw8v7" path="res://fonts/PoetsenOne-Regular.ttf" id="2_g847x"]
 [ext_resource type="AudioStream" uid="uid://bkun3xdi0xbqn" path="res://sounds/Collect.wav" id="3_5s30g"]
+[ext_resource type="AudioStream" uid="uid://cbaim5yertho2" path="res://sounds/welldone.mp3" id="4_ssw0j"]
 
 [sub_resource type="Animation" id="Animation_ssw0j"]
 length = 0.001
@@ -262,9 +263,15 @@ texture = SubResource("PlaceholderTexture2D_2yjle")
 stream = ExtResource("3_5s30g")
 
 [node name="welldone" type="AudioStreamPlayer" parent="TextureRect2" unique_id=1547335320]
+stream = ExtResource("4_ssw0j")
+volume_db = 5.0
+
+[node name="Timer" type="Timer" parent="TextureRect2" unique_id=100649351]
+wait_time = 3.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1642986319]
 wait_time = 2.0
 
 [connection signal="animation_finished" from="TextureRect2/AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="TextureRect2/Timer" to="." method="_on_welldonetimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

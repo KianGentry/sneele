@@ -16,12 +16,16 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=30
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://d3a4uqtvkhu0s"
+
 [autoload]
 
 Global="*uid://ptr3mflg2d8x"
-DialogueManager="*uid://c3rodes2l3gxb"
 InventoryManager="*uid://d3fkw82nf1ix3"
 ItemDatabase="*uid://b4ulry5g8jftn"
+ObjectiveManager="*uid://cunrlic0doqga"
 
 [compression]
 
@@ -36,7 +40,7 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/func_godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
 
 [input]
 
