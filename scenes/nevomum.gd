@@ -10,6 +10,16 @@ extends Node3D
 ]
 
 var player_in_area: bool = false
+var objective_complete: bool = false
+
+func _on_dialogue_closed(reason: String) -> void:
+	if objective_complete == false:
+		if reason == "finished":
+			objective_complete = true
+			ObjectiveManager.complete_objective("speak_to_mum")
+		elif reason == "walked_away":
+			objective_complete = true
+			ObjectiveManager.complete_objective("speak_to_mum")
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -19,8 +29,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_area = false
 		if dialogue.visible == true:
-			dialogue.current_line = 0
-			dialogue.visible = false
+			dialogue.close_dialogue("walked_away")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use"):
@@ -30,6 +39,5 @@ func _input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 			
 		elif player_in_area:
-			ObjectiveManager.complete_objective("speak_to_mum")
 			dialogue.start_dialogue(character_name, lines)
 			get_viewport().set_input_as_handled()

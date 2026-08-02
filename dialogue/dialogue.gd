@@ -15,6 +15,14 @@ var current_line: int = 0
 var _timer: float = 0.0
 var _is_typing: bool = false
 
+signal dialogue_closed(reason: String)
+
+func close_dialogue(reason: String) -> void:
+	if visible:
+		dialogue_closed.emit(reason)
+		hide()
+	current_line = 0
+
 func _process(delta: float) -> void:
 	if not _is_typing:
 		return
@@ -61,7 +69,7 @@ func advance() -> void:
 	if current_line < lines.size():
 		show_line()
 	else:
-		hide()
+		close_dialogue("finished")
 
 func show_line() -> void:
 	label.text = lines[current_line]
