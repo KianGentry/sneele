@@ -247,6 +247,8 @@ texture_albedo = ExtResource("2_8t03j")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=877568716]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.035381496, 0)
+alpha_cut = 1
+alpha_scissor_threshold = 0.193
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_2yjle")
 animation = &"stand"
@@ -272,3 +274,7 @@ target = NodePath("../CharacterBody3D")
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1606539690]
 transform = Transform3D(0.3679193, 0, 0, 0, 0.652309, 0, 0, 0, 0.42000002, 0, 0.69241136, 0)
 shape = SubResource("BoxShape3D_2yjle")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=388220898]
+light_bake_mode = 1
+omni_range = 1.5

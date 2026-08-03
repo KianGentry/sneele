@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://xfn3ivhbso6p"]
 
 [ext_resource type="Script" uid="uid://jxm1w8ws1suf" path="res://scenes/ui.gd" id="1_nt7q6"]
+[ext_resource type="PackedScene" uid="uid://bwn4e1msy85u0" path="res://scenes/objective_ui.tscn" id="2_gdt2y"]
 [ext_resource type="LabelSettings" uid="uid://d4ealo2qidxtd" path="res://scenes/labelWide.tres" id="2_x4jx1"]
 [ext_resource type="PackedScene" uid="uid://b34hi5mi8300r" path="res://scenes/inventory_ui.tscn" id="2_yev5y"]
+[ext_resource type="Texture2D" uid="uid://beotqs6dfdr73" path="res://textures/score.png" id="4_8dubc"]
+[ext_resource type="Material" uid="uid://dga1vit4csfr2" path="res://shaders/vignette.tres" id="5_wm3ai"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wm3ai"]
+texture = ExtResource("4_8dubc")
 
 [sub_resource type="Animation" id="Animation_yev5y"]
 length = 0.001
@@ -86,23 +92,223 @@ _data = {
 &"slide_back": SubResource("Animation_wm3ai")
 }
 
+[sub_resource type="Animation" id="Animation_p7vwb"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("objective_ui:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("objective_ui:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-240, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8dubc"]
+resource_name = "slide"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("objective_ui:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("objective_ui:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(240, -0.25, 0, 0.25, 0, 0, -0.16666667, 40, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ktti3"]
+resource_name = "slide_out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("objective_ui:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("objective_ui:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 240, -0.16666667, -40, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7vwb"]
+_data = {
+&"RESET": SubResource("Animation_p7vwb"),
+&"slide": SubResource("Animation_8dubc"),
+&"slide_out": SubResource("Animation_ktti3")
+}
+
+[sub_resource type="Animation" id="Animation_cgfq5"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("score:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("score:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2),
+"points": PackedFloat32Array(249, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_7dvkv"]
+resource_name = "pop_down"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("score:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(3, -0.25, 0, 0.25, 0, 3, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("score:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(214, -0.25, 0, 0.25, 0, 249, -0.16666667, -5.8333335, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_vdcm2"]
+resource_name = "pop_up"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("score:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(3, 0, 0, 0.083333336, 0, 3, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("score:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(243, 0, 0, 0.083333336, -4.8333335, 214, -0.16666667, 5.8333335, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6rmj2"]
+_data = {
+&"RESET": SubResource("Animation_cgfq5"),
+&"pop_down": SubResource("Animation_7dvkv"),
+&"pop_up": SubResource("Animation_vdcm2")
+}
+
 [node name="UI" type="CanvasLayer" unique_id=853805307]
 script = ExtResource("1_nt7q6")
+
+[node name="objective_ui" parent="." unique_id=408193106 instance=ExtResource("2_gdt2y")]
+offset_top = -240.0
+offset_bottom = -240.0
 
 [node name="inventory" parent="." unique_id=382744210 instance=ExtResource("2_yev5y")]
 offset_left = 320.0
 offset_right = 320.0
-mouse_filter = 2
 
 [node name="score" type="Label" parent="." unique_id=689480360]
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 9.0
+offset_right = 43.0
+offset_bottom = 32.000122
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_wm3ai")
 label_settings = ExtResource("2_x4jx1")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="scoreTimer" type="Timer" parent="." unique_id=1843859830]
+wait_time = 4.0
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1601710461]
 libraries/ = SubResource("AnimationLibrary_8dubc")
 
+[node name="VignetteOverlay" type="ColorRect" parent="." unique_id=634328341]
+visible = false
+z_index = -2
+material = ExtResource("5_wm3ai")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=76816271]
+libraries/ = SubResource("AnimationLibrary_p7vwb")
+autoplay = &"slide"
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="." unique_id=1789565811]
+libraries/ = SubResource("AnimationLibrary_6rmj2")
+autoplay = &"RESET"
+
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_obj_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer3" to="." method="_on_score_animation_finished"]

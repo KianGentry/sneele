@@ -4,21 +4,42 @@ extends CanvasLayer
 @onready var score_timer: Timer = $scoreTimer
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var inventory_ui: Control = $inventory
+@onready var obj_animation: AnimationPlayer = $AnimationPlayer2
+@onready var score_animation: AnimationPlayer = $AnimationPlayer3
 var is_playing = false
+var is_obj_playing = false
+var is_score_playing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	score_label.visible = false
 	Global.score_changed.connect(_on_score_changed)
 	score_label.text = str(Global.score)
 	
 func _on_score_changed(new_score: int) -> void:
-	score_label.visible = true
-	score_timer.start()
-	score_label.text = str(new_score)
+	if is_score_playing == true:
+		is_score_playing = true
+		score_timer.start()
+		score_label.text = str(new_score)
+	else:
+		if score_timer.time_left:
+			score_timer.start()
+			score_label.text = str(new_score)
+		else:
+			score_animation.play("pop_up")
+			score_timer.start()
+			score_label.text = str(new_score)
 
 func _on_score_timer_timeout() -> void:
-	score_label.visible = false
+	is_score_playing = true
+	score_animation.play("pop_down")
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	is_playing = false
+
+func _on_obj_animation_finished(anim_name: StringName) -> void:
+	is_obj_playing = false
+
+func _on_score_animation_finished(anim_name: StringName) -> void:
+	is_score_playing = false
+	if anim_name == "pop_down":
+		score_animation.play("RESET")

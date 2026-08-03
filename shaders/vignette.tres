@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_gbuoh")
 shader_parameter/tightness = 0.0
-shader_parameter/softness = 0.5
+shader_parameter/softness = 0.30000001355148

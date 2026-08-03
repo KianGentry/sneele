@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://hhgxvqe1w50m"]
+
+[ext_resource type="FontFile" uid="uid://b4u4siuy7a1ug" path="res://fonts/PanicTF.ttf" id="1_qpiym"]
+[ext_resource type="Script" uid="uid://dws5b7hwxsu4s" path="res://scenes/objective_entry.gd" id="2_t4uam"]
+
+[node name="ObjectiveEntry" type="RichTextLabel" unique_id=556963427]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_fonts/normal_font = ExtResource("1_qpiym")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("2_t4uam")
+main_color = Color(1, 1, 1, 1)
+side_color = Color(0.630113, 0.50049305, 0.7795584, 1)
+completed_color = Color(0.46817005, 0.7128779, 0.41198316, 1)

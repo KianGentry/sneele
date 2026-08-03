@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://cervwpi0p0jmr"
+path="res://.godot/imported/maze.map-33fdb21f26207949f3dc3737844864c5.tres"
+
+[deps]
+
+source_file="res://maps/maze.map"
+dest_files=["res://.godot/imported/maze.map-33fdb21f26207949f3dc3737844864c5.tres"]
+
+[params]
+

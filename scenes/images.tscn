@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://ys7aneh1a6ky" path="res://textures/nevo8.jpg" id="9_nk06f"]
 [ext_resource type="Texture2D" uid="uid://qxfy3n1tw4hi" path="res://textures/nevo9.jpg" id="10_3i45b"]
 [ext_resource type="Material" uid="uid://dga1vit4csfr2" path="res://shaders/vignette.tres" id="10_8jf6a"]
-[ext_resource type="AudioStream" uid="uid://dc2mmgyn4fowb" path="res://sounds/orchestra.mp3" id="11_h4rgq"]
 [ext_resource type="Texture2D" uid="uid://cd1ebb14mhqgk" path="res://textures/nevo10.jpg" id="11_qjs0i"]
 [ext_resource type="PackedScene" uid="uid://d1ytlo23r84y7" path="res://shaders/postprocessor.tscn" id="12_0oswp"]
+[ext_resource type="AudioStream" uid="uid://cxwqq56jvicvy" path="res://sounds/what is a musink.mp3" id="13_3i45b"]
 
 [node name="images" type="Control" unique_id=1268551173]
 layout_mode = 3
@@ -45,7 +45,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2071464103]
-stream = ExtResource("11_h4rgq")
+stream = ExtResource("13_3i45b")
+volume_db = 5.0
 autoplay = true
 
 [node name="postprocessor" parent="." unique_id=1387536302 instance=ExtResource("12_0oswp")]

@@ -12,6 +12,12 @@ extends Node3D
 
 var player_in_area: bool = false
 
+func _on_dialogue_closed(reason: String) -> void:
+	if reason == "finished":
+		pass
+	elif reason == "walked_away":
+		pass
+
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_area = true
@@ -20,8 +26,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_area = false
 		if dialogue.visible == true:
-			dialogue.current_line = 0
-			dialogue.visible = false
+			dialogue.close_dialogue("walked_away")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use"):

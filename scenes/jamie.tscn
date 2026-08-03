@@ -45,6 +45,7 @@ max_distance = 6.0
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1237404017]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)
 billboard = 2
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_461ij")
 autoplay = "default"
@@ -61,7 +62,7 @@ shape = SubResource("BoxShape3D_hb6na")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=831177770]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_eu7n4")
 
 [node name="dialogue" parent="." unique_id=568614671 node_paths=PackedStringArray("blip_player") instance=ExtResource("3_nq2en")]
@@ -73,3 +74,4 @@ volume_db = -4.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="dialogue_closed" from="dialogue" to="." method="_on_dialogue_closed"]

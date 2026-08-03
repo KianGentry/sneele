@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cxwqq56jvicvy"
+path="res://.godot/imported/what is a musink.mp3-527f82ff3d8443189d3ce5e9fe9228de.mp3str"
+
+[deps]
+
+source_file="res://sounds/what is a musink.mp3"
+dest_files=["res://.godot/imported/what is a musink.mp3-527f82ff3d8443189d3ce5e9fe9228de.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

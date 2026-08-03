@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c0c8kvt64xe5g" path="res://inventory_slot.gd" id="1_dxvxp"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dxvxp"]
+load_path = "res://.godot/imported/box.png-253697f77817e1e0333d6c455fc8037c.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hddt5"]
+texture = SubResource("CompressedTexture2D_dxvxp")
+modulate_color = Color(0.7204674, 0.7204675, 0.7204674, 1)
+
 [node name="PanelContainer" type="Control" unique_id=1316038021]
 layout_mode = 3
 anchors_preset = 0
@@ -14,14 +21,18 @@ texture_filter = 1
 layout_mode = 0
 offset_right = 54.0
 offset_bottom = 54.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hddt5")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1891624248]
 layout_mode = 0
-offset_right = 50.0
-offset_bottom = 50.0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 52.0
+offset_bottom = 53.0
 size_flags_horizontal = 0
 
 [node name="FocusBorder" type="ReferenceRect" parent="TextureRect" unique_id=1905708890]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 2.0

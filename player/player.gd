@@ -13,6 +13,7 @@ var step_timer: float = 0.0
 @onready var sprite = $AnimatedSprite3D
 @onready var player = self
 @onready var inv_open = false
+@onready var obj_open = true
 @onready var ui: CanvasLayer = $"../UI"
 
 func _physics_process(delta: float) -> void:
@@ -85,6 +86,17 @@ func _physics_process(delta: float) -> void:
 					ui.animation.play("slide_back")
 					inv_open = false
 					ui.inventory_ui.close_menu()
+		
+	if Input.is_action_just_pressed("obj"):
+		if ui.is_obj_playing == false:
+			if obj_open == false:
+				ui.obj_animation.play("slide")
+				ui.is_obj_playing = true
+				obj_open = true
+			else:
+				ui.is_obj_playing = true
+				ui.obj_animation.play("slide_out")
+				obj_open = false
 	
 	# pushing stuff logic
 	for i in get_slide_collision_count():

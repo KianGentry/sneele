@@ -41,6 +41,7 @@ lines = Array[String](["Nevo!", "God, we've ran out of milk and sugar AGAIN!", "
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1815674004]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)
 billboard = 2
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fv3l2")
 autoplay = "default"
@@ -57,7 +58,7 @@ shape = SubResource("BoxShape3D_2yjle")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1408281573]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("SphereShape3D_2yjle")
 
 [node name="dialogue" parent="." unique_id=1226244576 node_paths=PackedStringArray("blip_player") instance=ExtResource("3_gjfhi")]

@@ -683,8 +683,9 @@ fog_mode = 1
 fog_light_energy = 6.77
 fog_sun_scatter = 0.26
 fog_density = 0.1646
+fog_depth_curve = 1.8660657
 fog_depth_begin = 0.0
-fog_depth_end = 15.0
+fog_depth_end = 12.0
 
 [sub_resource type="Resource" id="Resource_tdlki"]
 script = ExtResource("38_wom8k")
