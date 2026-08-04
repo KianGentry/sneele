@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://dklqqatvupeiw" path="res://fonts/PetscopWide.ttf" id="2_tmwax"]
 [ext_resource type="FontFile" uid="uid://b4u4siuy7a1ug" path="res://fonts/PanicTF.ttf" id="3_8y0mt"]
 [ext_resource type="AudioStream" uid="uid://bsiphm18lvyna" path="res://sounds/jamiesound.mp3" id="5_8y0mt"]
+[ext_resource type="StyleBox" uid="uid://bkab0giagxrcs" path="res://scenes/button.tres" id="5_ru11m"]
 
 [sub_resource type="Theme" id="Theme_2yjle"]
 default_font = ExtResource("2_tmwax")
@@ -88,6 +89,35 @@ scroll_active = false
 scroll_following = true
 visible_characters = 0
 visible_ratio = 0.0
+
+[node name="ChoiceButtons" type="HBoxContainer" parent="." unique_id=1701111111]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -13.5
+offset_right = 71.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="YesButton" type="Button" parent="ChoiceButtons" unique_id=1701111112]
+custom_minimum_size = Vector2(66, 24)
+layout_mode = 2
+theme = SubResource("Theme_2yjle")
+theme_override_styles/normal = ExtResource("5_ru11m")
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="ChoiceButtons" unique_id=1701111113]
+custom_minimum_size = Vector2(66, 24)
+layout_mode = 2
+theme = SubResource("Theme_2yjle")
+theme_override_styles/normal = ExtResource("5_ru11m")
+text = "No"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=720576453]
 libraries/ = SubResource("AnimationLibrary_7ueb4")

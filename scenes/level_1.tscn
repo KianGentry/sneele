@@ -697,6 +697,9 @@ metadata/_custom_type_script = "uid://b1d8ygi56dpc1"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2yjle"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_fv3l2"]
+size = Vector3(0.9165039, 1.9963379, 1.3928223)
+
 [node name="level_1" type="Node3D" unique_id=1275399498]
 script = ExtResource("1_s7g0b")
 cutout_shader = ExtResource("2_mmfjm")
@@ -1211,6 +1214,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.561298, 11.392205, 19)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactions/transition" unique_id=1990611945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5336361, -2.421651, -2.712553)
 shape = SubResource("BoxShape3D_2yjle")
+
+[node name="Misc" type="Node" parent="." unique_id=256681234]
+
+[node name="block" type="StaticBody3D" parent="Misc" unique_id=1828366683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.380228, 14, 5.2815795)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Misc/block" unique_id=561833352]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041748047, -0.49816895, -0.0970459)
+shape = SubResource("BoxShape3D_fv3l2")
 
 [node name="postprocessor" parent="." unique_id=1387536302 instance=ExtResource("36_q0ron")]
 

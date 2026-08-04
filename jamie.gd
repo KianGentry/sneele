@@ -2,12 +2,22 @@ extends Node3D
 
 @onready var dialogue: CanvasLayer = $dialogue
 @export var character_name: String = "NPC"
+@export var yes_sound: AudioStreamPlayer
+@export var no_sound: AudioStreamPlayer
 
-# Type your NPC's dialogue directly in the Godot inspector list!
-@export var lines: Array[String] = [
+func _ready() -> void:
+	pass
+
+@onready var lines: Array = [
 	"Hi",
-	"hello",
-	"and goodbye."
+	"Can we get a chinese?",
+	{
+		"text": "Please?",
+		"decision": {
+			"yes_lines": ["Thanks for that."], 
+			"no_lines": ["Fucking dickhead."]
+		}
+	}
 ]
 
 var player_in_area: bool = false
@@ -17,6 +27,13 @@ func _on_dialogue_closed(reason: String) -> void:
 		pass
 	elif reason == "walked_away":
 		pass
+
+func _on_dialogue_yes_pressed(branch_lines: Array) -> void:
+	ObjectiveManager.add_objective("Get a chinese", "Jamie wants a chinese", false)
+	yes_sound.play()
+
+func _on_dialogue_no_pressed(branch_lines: Array) -> void:
+	no_sound.play()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

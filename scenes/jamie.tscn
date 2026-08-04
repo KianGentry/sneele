@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bbaxe4rob2u4a" path="res://scenes/dialoguebox.tscn" id="2_nq2en"]
 [ext_resource type="PackedScene" uid="uid://cx7mp8jfornk" path="res://dialogue/dialogue.tscn" id="3_nq2en"]
 [ext_resource type="AudioStream" uid="uid://bsiphm18lvyna" path="res://sounds/jamiesound.mp3" id="5_nq2en"]
+[ext_resource type="AudioStream" uid="uid://dk36d1gu7nbyn" path="res://sounds/thanksforthat.mp3" id="6_s2ki2"]
+[ext_resource type="AudioStream" uid="uid://cky76gee0uosg" path="res://sounds/fuckingdickhead.mp3" id="7_461ij"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k0gin"]
 atlas = ExtResource("2_cxw6r")
@@ -33,10 +35,11 @@ size = Vector3(0.42259216, 0.91503906, 0.39149475)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_eu7n4"]
 
-[node name="jamie" type="Node3D" unique_id=1805659340]
+[node name="jamie" type="Node3D" unique_id=1805659340 node_paths=PackedStringArray("yes_sound", "no_sound")]
 script = ExtResource("1_6w1q6")
 character_name = "Jamie"
-lines = Array[String](["Hi", "Can we get a chinese?", "Please?"])
+yes_sound = NodePath("thanks for that")
+no_sound = NodePath("fucking dickhead")
 
 [node name="dialoguebox" parent="." unique_id=1935183440 instance=ExtResource("2_nq2en")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9913556, 0)
@@ -72,6 +75,14 @@ blip_player = NodePath("../AudioStreamPlayer")
 stream = ExtResource("5_nq2en")
 volume_db = -4.0
 
+[node name="thanks for that" type="AudioStreamPlayer" parent="." unique_id=989792083]
+stream = ExtResource("6_s2ki2")
+
+[node name="fucking dickhead" type="AudioStreamPlayer" parent="." unique_id=1323659767]
+stream = ExtResource("7_461ij")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="dialogue_closed" from="dialogue" to="." method="_on_dialogue_closed"]
+[connection signal="no_pressed" from="dialogue" to="." method="_on_dialogue_no_pressed"]
+[connection signal="yes_pressed" from="dialogue" to="." method="_on_dialogue_yes_pressed"]

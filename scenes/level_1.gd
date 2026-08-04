@@ -3,17 +3,23 @@ extends Node3D
 @export var cutout_shader: Shader
 @onready var player: Node3D = $Entities/Player
 @onready var player_ui: CanvasLayer = $Entities/Player/UI
+@onready var block: CollisionShape3D = $Misc/block/CollisionShape3D
 
 # textures to ignore in shader
 @export var ignore_textures: Array[String] = []
 
 func _ready() -> void:
+	ObjectiveManager.objective_updated.connect(_on_objective_updated)
 	ObjectiveManager.add_objective(
 		"Speak to Mum",
 		"Go to your mum's room and speak to her.",
 		true
 	)
 	_apply_shader_to_children(self)
+
+func _on_objective_updated(objective: Objective) -> void:
+	if objective.id == "speak_to_mum" and objective.status == Objective.Status.COMPLETED:
+		block.disabled = true
 
 func _apply_shader_to_children(node: Node) -> void:
 	for child in node.get_children():

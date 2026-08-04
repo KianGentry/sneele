@@ -16,8 +16,24 @@ var step_timer: float = 0.0
 @onready var obj_open = true
 @onready var ui: CanvasLayer = $"../UI"
 
-func ready() -> void:
-	pass
+func _ready() -> void:
+	ObjectiveManager.objective_added.connect(_on_objective_added)
+	ObjectiveManager.objective_updated.connect(_on_objective_updated)
+	
+func _on_objective_added(objective: Objective) -> void:
+	if ui.is_obj_playing == false:
+		if obj_open == false:
+			ui.obj_animation.play("slide")
+			ui.is_obj_playing = true
+			obj_open = true
+
+func _on_objective_updated(objective: Objective) -> void:
+	if objective.status == objective.Status.COMPLETED:
+		if ui.is_obj_playing == false:
+			if obj_open == false:
+				ui.obj_animation.play("slide")
+				ui.is_obj_playing = true
+				obj_open = true
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

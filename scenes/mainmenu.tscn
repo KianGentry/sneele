@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://0weprcn1lrla" path="res://scenes/bush.tscn" id="6_7yvfd"]
 [ext_resource type="FontFile" uid="uid://dklqqatvupeiw" path="res://fonts/PetscopWide.ttf" id="6_85riq"]
 [ext_resource type="Script" uid="uid://dv5c1g3sbmc0v" path="res://scenes/menu.gd" id="6_h73c4"]
-[ext_resource type="StyleBox" uid="uid://bkab0giagxrcs" path="res://scenes/button.tres" id="7_dfy5j"]
 [ext_resource type="LabelSettings" uid="uid://d4ealo2qidxtd" path="res://scenes/labelWide.tres" id="8_kait0"]
+[ext_resource type="StyleBox" uid="uid://bp027gcojo01w" path="res://scenes/startbuttons.tres" id="9_prb5i"]
 [ext_resource type="AudioStream" uid="uid://r2vtiqfpie1y" path="res://sounds/start.mp3" id="10_uui5l"]
 [ext_resource type="AudioStream" uid="uid://dkj52064qvugr" path="res://music/menu sound.mp3" id="11_gjjcl"]
 [ext_resource type="AudioStream" uid="uid://biq560isyam3c" path="res://music/titles.mp3" id="11_uui5l"]
@@ -306,9 +306,9 @@ theme_override_colors/font_focus_color = Color(0.3703643, 0.37036455, 0.37036437
 theme_override_colors/font_hover_color = Color(0.3440754, 0.34407574, 0.34407645, 1)
 theme_override_fonts/font = ExtResource("6_85riq")
 theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = ExtResource("7_dfy5j")
-theme_override_styles/pressed = ExtResource("7_dfy5j")
-theme_override_styles/hover = ExtResource("7_dfy5j")
+theme_override_styles/normal = ExtResource("9_prb5i")
+theme_override_styles/pressed = ExtResource("9_prb5i")
+theme_override_styles/hover = ExtResource("9_prb5i")
 text = "Start!"
 
 [node name="Button2" type="Button" parent="menuUI" unique_id=1118205297]
@@ -321,9 +321,9 @@ theme_override_colors/font_focus_color = Color(0.3703643, 0.37036455, 0.37036437
 theme_override_colors/font_hover_color = Color(0.3440754, 0.34407574, 0.34407645, 1)
 theme_override_fonts/font = ExtResource("6_85riq")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = ExtResource("7_dfy5j")
-theme_override_styles/pressed = ExtResource("7_dfy5j")
-theme_override_styles/hover = ExtResource("7_dfy5j")
+theme_override_styles/normal = ExtResource("9_prb5i")
+theme_override_styles/pressed = ExtResource("9_prb5i")
+theme_override_styles/hover = ExtResource("9_prb5i")
 text = "Options"
 
 [node name="fade" type="ColorRect" parent="menuUI" unique_id=1496228434]

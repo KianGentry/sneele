@@ -4,7 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://b7raenyeu07ha" path="res://textures/mum.png" id="2_gjfhi"]
 [ext_resource type="PackedScene" uid="uid://cx7mp8jfornk" path="res://dialogue/dialogue.tscn" id="3_gjfhi"]
 [ext_resource type="AudioStream" uid="uid://4mvnppbvj7fp" path="res://sounds/mum.mp3" id="5_8gmu8"]
-[ext_resource type="PackedScene" uid="uid://cvfy271t6b613" path="res://scenes/importantdialoguebox.tscn" id="5_t0n3s"]
+[ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="5_t0n3s"]
+[ext_resource type="Texture2D" uid="uid://bcw1mkig5ke4a" path="res://textures/dialoguebox.png" id="6_286ls"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3nbgd"]
 atlas = ExtResource("2_gjfhi")
@@ -33,10 +34,13 @@ size = Vector3(0.42259216, 0.91503906, 0.39149475)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2yjle"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5x3aw"]
+radius = 4.0
+
 [node name="nevomum" type="Node3D" unique_id=1682060934]
 script = ExtResource("1_ni51f")
 character_name = "Mum"
-lines = Array[String](["Nevo!", "God, we've ran out of milk and sugar AGAIN!", "Must be all your cuppas, cheeky boy!", "Anyway, would you be a dear and nip to the shops? It's the least you could do.", "Ta-ta now!"])
+lines = ["Nevo!", "God, we've ran out of milk and sugar AGAIN!", "Must be all your cuppas, cheeky boy!", "Anyway, would you be a dear and nip to the shops? It's the least you could do.", "Ta-ta now!"]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1815674004]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)
@@ -68,9 +72,25 @@ blip_player = NodePath("../AudioStreamPlayer")
 stream = ExtResource("5_8gmu8")
 volume_db = -2.0
 
-[node name="importantdialoguebox" parent="." unique_id=1935183440 instance=ExtResource("5_t0n3s")]
+[node name="importantdialoguebox" type="Area3D" parent="." unique_id=1935183440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93610716, 0)
+script = ExtResource("5_t0n3s")
+max_distance = 4.0
+min_distance = 0.0
+max_scale = Vector3(2.5, 2.5, 2.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="importantdialoguebox" unique_id=74544369]
+shape = SubResource("SphereShape3D_5x3aw")
+
+[node name="Sprite3D" type="Sprite3D" parent="importantdialoguebox" unique_id=1934359447]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+modulate = Color(1, 0.34117648, 1, 1)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_286ls")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="dialogue_closed" from="dialogue" to="." method="_on_dialogue_closed"]
+[connection signal="body_entered" from="importantdialoguebox" to="importantdialoguebox" method="_on_body_entered"]
+[connection signal="body_exited" from="importantdialoguebox" to="importantdialoguebox" method="_on_body_exited"]
