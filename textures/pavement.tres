@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://6jvektsflmtm"]
+
+[ext_resource type="Texture2D" uid="uid://cdfm2ca5dhasi" path="res://textures/pavement.png" id="1_waasc"]
+
+[resource]
+albedo_texture = ExtResource("1_waasc")
+metallic_specular = 0.0
+texture_filter = 2

@@ -6,12 +6,20 @@ extends CanvasLayer
 @onready var inventory_ui: Control = $inventory
 @onready var obj_animation: AnimationPlayer = $AnimationPlayer2
 @onready var score_animation: AnimationPlayer = $AnimationPlayer3
+@onready var flash: ColorRect = $ColorRect
+@onready var tween: Tween = create_tween()
+
 var is_playing = false
 var is_obj_playing = false
 var is_score_playing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	flash.visible = true
+	tween.tween_property(flash, "color:a", 0.0, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	flash.visible = false
+	
 	Global.score_changed.connect(_on_score_changed)
 	score_label.text = str(Global.score)
 	

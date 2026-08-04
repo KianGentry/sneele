@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://bkfldsucennfy"
+path="res://.godot/imported/level_2.2.map-cbda2d4a5f1b9b99f5742ea281daf06d.tres"
+
+[deps]
+
+source_file="res://maps/autosave/level_2.2.map"
+dest_files=["res://.godot/imported/level_2.2.map-cbda2d4a5f1b9b99f5742ea281daf06d.tres"]
+
+[params]
+

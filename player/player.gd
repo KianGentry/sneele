@@ -16,6 +16,9 @@ var step_timer: float = 0.0
 @onready var obj_open = true
 @onready var ui: CanvasLayer = $"../UI"
 
+func ready() -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta

@@ -11,7 +11,7 @@ render_mode blend_mix,
 uniform bool affine_mapping = false;
 uniform sampler2D albedo_texture : source_color, filter_nearest;
 uniform float alpha_scissor : hint_range(0, 1) = 0.6;
-uniform float jitter: hint_range(0, 1) = 0.3;
+uniform float jitter: hint_range(0, 1) = 0.2;
 uniform ivec2 resolution = ivec2(160, 120);
 
 // CUTOUT UNIFORMS
@@ -25,6 +25,7 @@ uniform float depth_margin : hint_range(-2.0, 2.0) = 0.0;
 uniform float ground_margin : hint_range(-2.0, 2.0) = 0.0; 
 uniform float floor_threshold : hint_range(0.0, 1.0) = 0.1;
 uniform float facing_threshold : hint_range(0.0, 1.0) = 0.4; 
+uniform bool enable_cutout = true;
 
 // DITHERING
 const mat4 dither_table = mat4(
@@ -98,7 +99,7 @@ void fragment() {
     float facing_dot = dot(NORMAL, -normalize(VERTEX));
     bool is_facing_camera = facing_dot > facing_threshold;
 
-    if (frag_distance < (player_depth + depth_margin) && !is_ground && is_facing_camera) {
+    if (enable_cutout && frag_distance < (player_depth + depth_margin) && !is_ground && is_facing_camera) {
         
         float aspect = VIEWPORT_SIZE.x / VIEWPORT_SIZE.y;
         vec2 screen_center = vec2(0.5, 0.5) + player_screen_offset;

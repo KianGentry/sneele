@@ -1,18 +1,11 @@
 extends Node3D
 
 @export var cutout_shader: Shader
-@onready var player: Node3D = $Entities/Player
-@onready var player_ui: CanvasLayer = $Entities/Player/UI
 
 # textures to ignore in shader
 @export var ignore_textures: Array[String] = []
 
 func _ready() -> void:
-	ObjectiveManager.add_objective(
-		"Speak to Mum",
-		"Go to your mum's room and speak to her.",
-		true
-	)
 	_apply_shader_to_children(self)
 
 func _apply_shader_to_children(node: Node) -> void:
@@ -53,12 +46,3 @@ func _convert_mesh_materials(mesh_instance: MeshInstance3D) -> void:
 				new_mat.set_shader_parameter("albedo_texture", old_mat.albedo_texture)
 				
 			mesh_instance.set_surface_override_material(i, new_mat)
-
-func _on_transition_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		player_ui.flash.visible = true
-		player_ui.flash.color.a = 0.0
-		var tween = create_tween()
-		tween.tween_property(player_ui.flash, "color:a", 1.0, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		await tween.finished
-		get_tree().change_scene_to_file("res://scenes/level_1_1.tscn")

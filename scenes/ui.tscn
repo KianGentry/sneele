@@ -264,10 +264,12 @@ script = ExtResource("1_nt7q6")
 [node name="objective_ui" parent="." unique_id=408193106 instance=ExtResource("2_gdt2y")]
 offset_top = -240.0
 offset_bottom = -240.0
+mouse_filter = 1
 
 [node name="inventory" parent="." unique_id=382744210 instance=ExtResource("2_yev5y")]
 offset_left = 320.0
 offset_right = 320.0
+mouse_filter = 1
 
 [node name="score" type="Label" parent="." unique_id=689480360]
 anchors_preset = 2
@@ -291,7 +293,6 @@ one_shot = true
 libraries/ = SubResource("AnimationLibrary_8dubc")
 
 [node name="VignetteOverlay" type="ColorRect" parent="." unique_id=634328341]
-visible = false
 z_index = -2
 material = ExtResource("5_wm3ai")
 anchors_preset = 15
@@ -299,6 +300,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="." unique_id=76816271]
 libraries/ = SubResource("AnimationLibrary_p7vwb")
@@ -307,6 +309,15 @@ autoplay = &"slide"
 [node name="AnimationPlayer3" type="AnimationPlayer" parent="." unique_id=1789565811]
 libraries/ = SubResource("AnimationLibrary_6rmj2")
 autoplay = &"RESET"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=868772416]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="timeout" from="scoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
