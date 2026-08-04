@@ -8,7 +8,7 @@ extends Node3D
 func _ready() -> void:
 	pass
 
-@onready var lines: Array = [
+var lines: Array = [
 	"Hi",
 	"Can we get a chinese?",
 	{
@@ -18,6 +18,14 @@ func _ready() -> void:
 			"no_lines": ["Fucking dickhead."]
 		}
 	}
+]
+
+var complete_lines_yes: Array = [
+	"I just told you, get me a chinese please."
+]
+
+var complete_lines_no: Array = [
+	"Stupid idiot."
 ]
 
 var player_in_area: bool = false
@@ -31,9 +39,11 @@ func _on_dialogue_closed(reason: String) -> void:
 func _on_dialogue_yes_pressed(branch_lines: Array) -> void:
 	ObjectiveManager.add_objective("Get a chinese", "Jamie wants a chinese", false)
 	yes_sound.play()
+	lines = complete_lines_yes
 
 func _on_dialogue_no_pressed(branch_lines: Array) -> void:
 	no_sound.play()
+	lines = complete_lines_no
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):

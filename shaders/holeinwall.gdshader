@@ -10,6 +10,7 @@ render_mode blend_mix,
 // PS1 UNIFORMS
 uniform bool affine_mapping = false;
 uniform sampler2D albedo_texture : source_color, filter_nearest;
+uniform vec2 uv_scale = vec2(1.0, 1.0);
 uniform float alpha_scissor : hint_range(0, 1) = 0.6;
 uniform float jitter: hint_range(0, 1) = 0.2;
 uniform ivec2 resolution = ivec2(160, 120);
@@ -75,7 +76,8 @@ void vertex() {
 
 void fragment() {
     vec4 color_base = COLOR;
-    vec4 albedo_tex = texture(albedo_texture, UV);
+    vec2 tiled_uv = UV * uv_scale;
+    vec4 albedo_tex = texture(albedo_texture, tiled_uv);
 
     ALBEDO = (color_base * albedo_tex).rgb;
     ALPHA = albedo_tex.a * color_base.a;

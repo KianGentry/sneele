@@ -1,14 +1,21 @@
 extends Node3D
 
 @export var cutout_shader: Shader
-@onready var player: Node3D = $Entities/Player
+@onready var player: CharacterBody3D = $Entities/Player/CharacterBody3D
 @onready var player_ui: CanvasLayer = $Entities/Player/UI
 @onready var block: CollisionShape3D = $Misc/block/CollisionShape3D
+@onready var world: FuncGodotMap = $World/FuncGodotMap
+@onready var world_1_1: FuncGodotMap = $level_1_1/World/FuncGodotMap
+@onready var lvl1_spawn: Marker3D = $Interactions/transition/Marker3D
+@onready var lvl1_1_spawn: Marker3D = $level_1_1/Interactions/transition/Marker3D
 
 # textures to ignore in shader
 @export var ignore_textures: Array[String] = []
 
+var _is_transitioning: bool = false
+
 func _ready() -> void:
+	set_process(true)
 	ObjectiveManager.objective_updated.connect(_on_objective_updated)
 	ObjectiveManager.add_objective(
 		"Speak to Mum",
@@ -54,6 +61,7 @@ func _convert_mesh_materials(mesh_instance: MeshInstance3D) -> void:
 			var new_mat = ShaderMaterial.new()
 			new_mat.shader = cutout_shader
 			new_mat.set_shader_parameter("enable_cutout", not skip_cutout)
+			new_mat.set_shader_parameter("uv_scale", Vector2(old_mat.uv1_scale.x, old_mat.uv1_scale.y))
 
 			if old_mat.albedo_texture:
 				new_mat.set_shader_parameter("albedo_texture", old_mat.albedo_texture)
@@ -62,9 +70,33 @@ func _convert_mesh_materials(mesh_instance: MeshInstance3D) -> void:
 
 func _on_transition_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		player_ui.flash.visible = true
-		player_ui.flash.color.a = 0.0
-		var tween = create_tween()
-		tween.tween_property(player_ui.flash, "color:a", 1.0, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-		await tween.finished
-		get_tree().change_scene_to_file("res://scenes/level_1_1.tscn")
+		await _run_transition(lvl1_1_spawn, false)
+
+
+func _on_transition_1_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		await _run_transition(lvl1_spawn, true)
+
+func _run_transition(target_spawn: Marker3D, show_level_1: bool) -> void:
+	if _is_transitioning:
+		return
+
+	_is_transitioning = true
+	player_ui.flash.visible = true
+	player_ui.flash.color.a = 0.0
+
+	var fade_in: Tween = create_tween()
+	fade_in.tween_property(player_ui.flash, "color:a", 1.0, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await fade_in.finished
+
+	player.global_position = target_spawn.global_position
+
+	world.visible = show_level_1
+	world_1_1.visible = not show_level_1
+
+	var fade_out: Tween = create_tween()
+	fade_out.tween_property(player_ui.flash, "color:a", 0.0, 0.35).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await fade_out.finished
+
+	player_ui.flash.visible = false
+	_is_transitioning = false
