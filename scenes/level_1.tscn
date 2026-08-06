@@ -1754,22 +1754,22 @@ light_bake_mode = 1
 [node name="Entities" type="Node" parent="." unique_id=220823210]
 
 [node name="testItem" parent="Entities" unique_id=1845204243 instance=ExtResource("26_s7g0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.08929, 12.763796, 9.083528)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.267565, 12.763796, 7.3952255)
 
 [node name="testItem2" parent="Entities" unique_id=110475383 instance=ExtResource("26_s7g0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.106365, 12.763796, 9.083528)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.267565, 12.763796, 10.130879)
 
 [node name="testItem3" parent="Entities" unique_id=879212346 instance=ExtResource("26_s7g0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.211166, 12.763796, 9.083528)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.267565, 12.763796, 8.742632)
 
 [node name="testItem4" parent="Entities" unique_id=908460964 instance=ExtResource("26_s7g0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.211166, 12.763796, 8.399974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.283041, 12.763796, 5.2269573)
 
 [node name="testItem5" parent="Entities" unique_id=1691024104 instance=ExtResource("26_s7g0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.030144, 12.763796, 8.399974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.17357, 12.763796, 5.2269573)
 
 [node name="testItem6" parent="Entities" unique_id=1948484024 instance=ExtResource("26_s7g0b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.03339, 12.763796, 8.399974)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.105265, 12.763796, 5.2269573)
 
 [node name="chair" parent="Entities" unique_id=230600662 instance=ExtResource("25_uuj1x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.634182, 12.463797, 9.097389)
