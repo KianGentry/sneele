@@ -1814,11 +1814,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.01094, 11.812664, 12.2262
 item = SubResource("Resource_tdlki")
 item_get_scene = ExtResource("40_v0i6o")
 
-[node name="Interactable2" parent="Interactions" unique_id=1045256783 instance=ExtResource("36_tdlki")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -19.01094, 11.812664, 8.33375)
-item = SubResource("Resource_tdlki")
-item_get_scene = ExtResource("40_v0i6o")
-
 [node name="transition" type="Area3D" parent="Interactions" unique_id=586967283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.561298, 11.392205, 19)
 
