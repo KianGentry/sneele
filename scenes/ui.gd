@@ -21,6 +21,7 @@ func _ready() -> void:
 	tween.tween_property(flash, "color:a", 0.0, 1.0).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	flash.visible = false
+	animation.play("RESET")
 	
 	Global.score_changed.connect(_on_score_changed)
 	score_label.text = str(Global.score)

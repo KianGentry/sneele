@@ -132,7 +132,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				ui.is_score_playing = true
 				ui.close.play()
-				ui.score_animation.play("pop_out")
+				ui.score_animation.play("pop_down")
 				score_open = false
 	
 	# pushing stuff logic

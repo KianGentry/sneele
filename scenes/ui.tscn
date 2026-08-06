@@ -274,7 +274,7 @@ mouse_filter = 1
 
 [node name="inventory" parent="." unique_id=382744210 instance=ExtResource("2_yev5y")]
 offset_left = 320.0
-offset_right = 320.0
+offset_right = 320.00006
 mouse_filter = 1
 
 [node name="score" type="Label" parent="." unique_id=689480360]
