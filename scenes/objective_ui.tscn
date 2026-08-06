@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dsyx6k2k63baw" path="res://scenes/objective_ui.gd" id="1_56tas"]
 [ext_resource type="PackedScene" uid="uid://hhgxvqe1w50m" path="res://scenes/objective_entry.tscn" id="2_5lp0o"]
 [ext_resource type="Texture2D" uid="uid://d3aywpeqpbhxi" path="res://textures/box.png" id="3_sr3nt"]
-[ext_resource type="AudioStream" uid="uid://cuneubmpnkf0w" path="res://sounds/musinksding.mp3" id="4_sr3nt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sr3nt"]
 texture = ExtResource("3_sr3nt")
@@ -19,7 +18,7 @@ objective_entry_scene = ExtResource("2_5lp0o")
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1958828872]
 texture_filter = 1
 layout_mode = 0
-offset_right = 24.0
+offset_right = 74.0
 offset_bottom = 36.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_sr3nt")
 
@@ -38,7 +37,3 @@ layout_mode = 2
 texture_filter = 1
 layout_mode = 2
 theme_override_constants/separation = 4
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1031693478]
-stream = ExtResource("4_sr3nt")
-volume_db = -2.0

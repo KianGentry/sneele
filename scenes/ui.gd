@@ -8,6 +8,8 @@ extends CanvasLayer
 @onready var score_animation: AnimationPlayer = $AnimationPlayer3
 @onready var flash: ColorRect = $ColorRect
 @onready var tween: Tween = create_tween()
+@onready var close: AudioStreamPlayer = $close
+@onready var open: AudioStreamPlayer = $open
 
 var is_playing = false
 var is_obj_playing = false

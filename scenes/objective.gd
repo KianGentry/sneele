@@ -27,3 +27,6 @@ func complete() -> void:
 
 func fail() -> void:
 	status = Status.FAILED
+
+func rename_to(new_name: String) -> void:
+	objective_name = new_name

@@ -1,12 +1,8 @@
 extends Area3D
 
-@export_group("Distance Settings")
-## Distance (in meters) where the triangle first appears
 @export var max_distance: float = 6.0 
-## Distance where the triangle reaches maximum size
 @export var min_distance: float = 1.5 
 
-@export_group("Indicator Scale")
 @export var min_scale: Vector3 = Vector3(0.2, 0.2, 0.2)
 @export var max_scale: Vector3 = Vector3(1.2, 1.2, 1.2)
 

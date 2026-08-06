@@ -14,6 +14,7 @@ var step_timer: float = 0.0
 @onready var player = self
 @onready var inv_open = false
 @onready var obj_open = true
+@onready var score_open = false
 @onready var ui: CanvasLayer = $"../UI"
 
 func _ready() -> void:
@@ -96,6 +97,7 @@ func _physics_process(delta: float) -> void:
 			if ui.is_playing == false:
 				if inv_open == false:
 					ui.animation.play("slide")
+					ui.open.play()
 					ui.is_playing = true
 					inv_open = true
 					
@@ -103,6 +105,7 @@ func _physics_process(delta: float) -> void:
 				else:
 					ui.is_playing = true
 					ui.animation.play("slide_back")
+					ui.close.play()
 					inv_open = false
 					ui.inventory_ui.close_menu()
 		
@@ -110,12 +113,27 @@ func _physics_process(delta: float) -> void:
 		if ui.is_obj_playing == false:
 			if obj_open == false:
 				ui.obj_animation.play("slide")
+				ui.open.play()
 				ui.is_obj_playing = true
 				obj_open = true
 			else:
 				ui.is_obj_playing = true
+				ui.close.play()
 				ui.obj_animation.play("slide_out")
 				obj_open = false
+	
+	if Input.is_action_just_pressed("score"):
+		if ui.is_score_playing == false:
+			if score_open == false:
+				ui.score_animation.play("pop_up")
+				ui.open.play()
+				ui.is_score_playing = true
+				score_open = true
+			else:
+				ui.is_score_playing = true
+				ui.close.play()
+				ui.score_animation.play("pop_out")
+				score_open = false
 	
 	# pushing stuff logic
 	for i in get_slide_collision_count():

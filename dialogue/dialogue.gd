@@ -110,6 +110,7 @@ func show_line() -> void:
 	_is_typing = true
 	_set_decision_state(false)
 
+	# THIS CODE IS ASS!!!!
 	if entry is Dictionary and entry.has("decision"):
 		var decision: Variant = entry.get("decision")
 		if decision is Dictionary:

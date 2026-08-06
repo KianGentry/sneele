@@ -8,6 +8,8 @@ extends Node3D
 @onready var world_1_1: FuncGodotMap = $level_1_1/World/FuncGodotMap
 @onready var lvl1_spawn: Marker3D = $Interactions/transition/Marker3D
 @onready var lvl1_1_spawn: Marker3D = $level_1_1/Interactions/transition/Marker3D
+@onready var shop_spawn: Marker3D = $level_1_1/Interactions/Interactable2/Marker3D
+@onready var blackbg: Sprite2D = $Background/Parallax2D/Sprite2D/Sprite2D2
 
 # textures to ignore in shader
 @export var ignore_textures: Array[String] = []
@@ -100,3 +102,9 @@ func _run_transition(target_spawn: Marker3D, show_level_1: bool) -> void:
 
 	player_ui.flash.visible = false
 	_is_transitioning = false
+
+
+func _on_shop_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		await _run_transition(shop_spawn, false)
+		blackbg.visible = false

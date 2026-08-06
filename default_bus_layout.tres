@@ -5,6 +5,14 @@ resource_name = "EQ"
 band_db/3200_hz = -23.3
 band_db/10000_hz = -29.6
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+room_size = 0.5
+damping = 0.2
+spread = 0.5
+hipass = 0.5
+wet = 0.2
+
 [resource]
 bus/1/name = &"coin"
 bus/1/solo = false
@@ -14,3 +22,11 @@ bus/1/volume_db = 0.0
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectEQ_j3pel")
 bus/1/effect/0/enabled = true
+bus/2/name = &"reverb"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
+bus/2/effect/0/enabled = true

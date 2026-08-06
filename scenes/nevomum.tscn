@@ -89,8 +89,13 @@ billboard = 2
 texture_filter = 0
 texture = ExtResource("6_286ls")
 
+[node name="Timer" type="Timer" parent="." unique_id=513778955]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="dialogue_closed" from="dialogue" to="." method="_on_dialogue_closed"]
 [connection signal="body_entered" from="importantdialoguebox" to="importantdialoguebox" method="_on_body_entered"]
 [connection signal="body_exited" from="importantdialoguebox" to="importantdialoguebox" method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

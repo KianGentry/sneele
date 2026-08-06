@@ -20,8 +20,7 @@ func refresh_inventory() -> void:
 			var slot_instance = slot_scene.instantiate() as InventorySlot
 			slot_container.add_child(slot_instance)
 			slot_instance.set_item(item)
-			
-			# When the player's cursor moves onto this slot, update the label with this item's name
+
 			slot_instance.focus_entered.connect(_on_slot_focused.bind(item.name))
 
 func _on_slot_focused(item_name: String) -> void:
@@ -31,14 +30,11 @@ func _on_slot_focused(item_name: String) -> void:
 func open_menu() -> void:
 	name_label.text = ""
 	if slot_container.get_child_count() > 0:
-		# call_deferred waits until the engine is finished drawing the frame
-		# before executing grab_focus, guaranteeing it won't fail.
 		slot_container.get_child(0).call_deferred("grab_focus")
 
 ## Called by the player script when closing
 func close_menu() -> void:
 	name_label.text = ""
-	# Remove the cursor focus so it doesn't invisibly stay selected
 	var focused_node = get_viewport().gui_get_focus_owner()
 	if focused_node:
 		focused_node.release_focus()

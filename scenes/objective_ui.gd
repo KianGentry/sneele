@@ -10,6 +10,8 @@ var ui_elements: Dictionary = {}
 func _ready() -> void:
 	ObjectiveManager.objective_added.connect(_on_objective_added)
 	ObjectiveManager.objective_updated.connect(_on_objective_updated)
+	ObjectiveManager.objective_renamed.connect(_on_objective_renamed)
+	ObjectiveManager.objective_removed.connect(_on_objective_removed)
 	
 	for obj in ObjectiveManager.active_objectives.values():
 		_on_objective_added(obj)
@@ -25,3 +27,14 @@ func _on_objective_updated(objective: Objective) -> void:
 	if ui_elements.has(objective.id):
 		var entry = ui_elements[objective.id]
 		entry.update_display()
+
+func _on_objective_renamed(objective: Objective) -> void:
+	if ui_elements.has(objective.id):
+		var entry = ui_elements[objective.id]
+		entry.update_display()
+
+func _on_objective_removed(id: String) -> void:
+	if ui_elements.has(id):
+		var entry = ui_elements[id]
+		entry.queue_free()
+		ui_elements.erase(id)

@@ -3,6 +3,7 @@ extends Node3D
 @onready var dialogue: CanvasLayer = $dialogue
 @export var character_name: String = "NPC"
 @onready var dialoguebox: Sprite3D = $"importantdialoguebox/Sprite3D"
+@onready var timer: Timer = $Timer
 
 @export var lines: Array = [
 	"Hi",
@@ -22,12 +23,15 @@ var objective_complete: bool = false
 func _on_dialogue_closed(reason: String) -> void:
 	if objective_complete == false:
 		dialoguebox.modulate = Color(255,255,255)
+		timer.start()
 		if reason == "finished":
 			objective_complete = true
 			ObjectiveManager.complete_objective("speak_to_mum")
+			ObjectiveManager.add_objective("Go to the shops", "A bag of sugar, a container of milk... and a Joe Dirt DVD", true)
 		elif reason == "walked_away":
 			objective_complete = true
 			ObjectiveManager.complete_objective("speak_to_mum")
+			ObjectiveManager.add_objective("Go to the shops", "A bag of sugar, a container of milk... and a Joe Dirt DVD", true)
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -51,3 +55,7 @@ func _input(event: InputEvent) -> void:
 		elif player_in_area:
 			dialogue.start_dialogue(character_name, lines)
 			get_viewport().set_input_as_handled()
+
+
+func _on_timer_timeout() -> void:
+	ObjectiveManager.remove_objective("speak_to_mum")

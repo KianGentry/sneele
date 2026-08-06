@@ -240,6 +240,18 @@ platform_on_leave = 2
 script = ExtResource("1_rkbax")
 camera = NodePath("../Camera3D")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="CharacterBody3D" unique_id=837997496]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, 0.5, 0, -0.5, -2.1855694e-08, 0, 0.5, 0)
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_size = 0.4
+light_bake_mode = 0
+spot_range = 1.5
+spot_attenuation = -1.0
+spot_angle = 30.0
+spot_angle_attenuation = 0.00088012766
+
 [node name="Decal" type="Decal" parent="CharacterBody3D" unique_id=486156464]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.24181062, -0.05240847)
 size = Vector3(0.5, 0.1, 0.5)
@@ -247,6 +259,7 @@ texture_albedo = ExtResource("2_8t03j")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D" unique_id=877568716]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.035381496, 0)
+shaded = true
 alpha_cut = 1
 alpha_scissor_threshold = 0.193
 texture_filter = 0
@@ -262,6 +275,10 @@ shape = SubResource("CapsuleShape3D_6e3g8")
 stream = SubResource("AudioStreamRandomizer_2yjle")
 volume_db = -5.0
 
+[node name="AudioListener3D" type="AudioListener3D" parent="CharacterBody3D" unique_id=631690990]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12522286, 0)
+doppler_tracking = 2
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1799818884 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 0.94547784, 0.32568645, 0, -0.32568645, 0.94547784, 0, 0.9815468, 2.398262)
 current = true
@@ -274,7 +291,3 @@ target = NodePath("../CharacterBody3D")
 [node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=1606539690]
 transform = Transform3D(0.3679193, 0, 0, 0, 0.652309, 0, 0, 0, 0.42000002, 0, 0.69241136, 0)
 shape = SubResource("BoxShape3D_2yjle")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=388220898]
-light_bake_mode = 1
-omni_range = 1.5

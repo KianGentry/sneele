@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://b002utmxk7ifr"
+path="res://.godot/imported/chinese.map-37cdb6ca5fe4db930c1d61f27931ce35.tres"
+
+[deps]
+
+source_file="res://maps/chinese.map"
+dest_files=["res://.godot/imported/chinese.map-37cdb6ca5fe4db930c1d61f27931ce35.tres"]
+
+[params]
+

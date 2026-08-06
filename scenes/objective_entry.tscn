@@ -14,5 +14,5 @@ fit_content = true
 autowrap_mode = 0
 script = ExtResource("2_t4uam")
 main_color = Color(1, 1, 1, 1)
-side_color = Color(0.630113, 0.50049305, 0.7795584, 1)
+side_color = Color(0.76489645, 0.67469645, 0.87748766, 1)
 completed_color = Color(0.46817005, 0.7128779, 0.41198316, 1)

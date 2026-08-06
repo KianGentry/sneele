@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cgnvkhqnsx7mo"]
+
+[ext_resource type="Texture2D" uid="uid://c6yhoe6kvbk34" path="res://textures/crossing.png" id="1_l7c7a"]
+
+[resource]
+albedo_texture = ExtResource("1_l7c7a")
+metallic_specular = 0.0
+texture_filter = 2
