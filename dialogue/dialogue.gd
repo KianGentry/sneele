@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var label: RichTextLabel = $RichTextLabel2
 @onready var npcname: RichTextLabel = $RichTextLabel
+@onready var box: TextureRect = $TextureRect
 @onready var choice_buttons: Control = $ChoiceButtons
 @onready var yes_button: Button = $ChoiceButtons/YesButton
 @onready var no_button: Button = $ChoiceButtons/NoButton
@@ -235,6 +236,15 @@ func _play_choice_sound(choice: String) -> void:
 	add_child(choice_player)
 	choice_player.finished.connect(choice_player.queue_free)
 	choice_player.play()
+
+func set_choice_labels(yes_label: String, no_label: String) -> void:
+	yes_button.text = yes_label
+	no_button.text = no_label
+
+func set_box_visible(value: bool) -> void:
+	box.visible = value
+	label.visible = value
+	npcname.visible = value
 
 func is_active() -> bool:
 	return visible

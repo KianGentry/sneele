@@ -24,13 +24,14 @@ func add_objective(p_name: String, p_desc: String, p_is_main: bool = true) -> vo
 	var objective_type_label = "Main" if p_is_main else "Side"
 	print("New %s Objective: %s" % [objective_type_label, p_name])
 
-## Marks an existing objective as complete
+## Marks an existing objective as complete and removes it after 3 seconds
 func complete_objective(id: String) -> void:
 	if active_objectives.has(id):
 		var obj: Objective = active_objectives[id]
 		obj.complete()
 		objective_updated.emit(obj)
 		print("Objective Completed: ", obj.objective_name)
+		get_tree().create_timer(3.0).timeout.connect(func(): remove_objective(id))
 	else:
 		push_error("Objective Manager: Cannot complete, ID '%s' not found." % id)
 
