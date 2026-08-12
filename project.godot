@@ -131,6 +131,7 @@ textures/vram_compression/cache_gpu_compressor=false
 textures/webp_compression/compression_method=0
 shader_compiler/shader_cache/compress=false
 shader_compiler/shader_cache/use_zstd_compression=false
+occlusion_culling/use_occlusion_culling=true
 
 [shader_globals]
 

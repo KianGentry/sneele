@@ -249,7 +249,7 @@ light_size = 0.4
 light_bake_mode = 0
 spot_range = 1.5
 spot_attenuation = -1.0
-spot_angle = 30.0
+spot_angle = 20.0
 spot_angle_attenuation = 0.00088012766
 
 [node name="Decal" type="Decal" parent="CharacterBody3D" unique_id=486156464]
