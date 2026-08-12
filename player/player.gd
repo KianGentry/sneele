@@ -13,6 +13,9 @@ var pull_follow_strength: float = 10.0
 
 var pulled_body: RigidBody3D = null
 var pull_facing: Vector3 = Vector3(0, 0, 1)
+var pulled_body_prev_lock_x: bool = false
+var pulled_body_prev_lock_y: bool = false
+var pulled_body_prev_lock_z: bool = false
 
 @export var camera: Camera3D
 @onready var sound = $AudioStreamPlayer3D
@@ -87,10 +90,19 @@ func _start_pull(input_dir: Vector2) -> void:
 	pull_facing = _cardinalize_direction(facing_from_input)
 
 	pulled_body.sleeping = false
+	pulled_body_prev_lock_x = pulled_body.axis_lock_angular_x
+	pulled_body_prev_lock_y = pulled_body.axis_lock_angular_y
+	pulled_body_prev_lock_z = pulled_body.axis_lock_angular_z
+	pulled_body.axis_lock_angular_x = true
+	pulled_body.axis_lock_angular_y = true
+	pulled_body.axis_lock_angular_z = true
 	pulled_body.angular_velocity = Vector3.ZERO
 
 func _stop_pull() -> void:
 	if pulled_body != null and is_instance_valid(pulled_body):
+		pulled_body.axis_lock_angular_x = pulled_body_prev_lock_x
+		pulled_body.axis_lock_angular_y = pulled_body_prev_lock_y
+		pulled_body.axis_lock_angular_z = pulled_body_prev_lock_z
 		pulled_body.angular_velocity = Vector3.ZERO
 	pulled_body = null
 

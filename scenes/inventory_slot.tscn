@@ -33,13 +33,12 @@ offset_bottom = 53.0
 size_flags_horizontal = 0
 
 [node name="FocusBorder" type="ReferenceRect" parent="TextureRect" unique_id=1905708890]
-visible = false
 texture_filter = 1
 layout_mode = 0
 offset_top = -1.0
 offset_right = 50.0
 offset_bottom = 49.0
-border_color = Color(1, 1, 1, 0.48235294)
+border_color = Color(0.9999998, 0.43102852, 0.997356, 0.48235294)
 border_width = 4.0
 editor_only = false
 
