@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://p5bisyxmj6ib"]
+
+[ext_resource type="Script" uid="uid://emxuebunltjc" path="res://scenes/sugar.gd" id="1_rlanb"]
+[ext_resource type="Script" uid="uid://b1d8ygi56dpc1" path="res://scenes/item_data.gd" id="2_m7qj8"]
+[ext_resource type="Texture2D" uid="uid://dxxk8hn07q8m5" path="res://textures/sugar.png" id="3_fowwt"]
+[ext_resource type="AudioStream" uid="uid://du1bh1s4ac7ld" path="res://sounds/flush.mp3" id="5_wgv6c"]
+[ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="6_2ca4x"]
+[ext_resource type="Texture2D" uid="uid://bo6cqkvi4dld7" path="res://textures/usebox.png" id="7_logab"]
+
+[sub_resource type="Resource" id="Resource_rlanb"]
+script = ExtResource("2_m7qj8")
+name = "Sugar"
+texture = ExtResource("3_fowwt")
+metadata/_custom_type_script = "uid://b1d8ygi56dpc1"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gdkps"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fgw8e"]
+radius = 2.0180874
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r78k"]
+shading_mode = 2
+albedo_color = Color(0.43177083, 0.68117356, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2yjle"]
+lightmap_size_hint = Vector2i(14, 29)
+material = SubResource("StandardMaterial3D_3r78k")
+size = Vector3(0.6359863, 1.0772095, 0.81103516)
+
+[node name="sugar" type="Area3D" unique_id=1760116788]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_rlanb")
+item = SubResource("Resource_rlanb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1443679830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30382162, 0)
+shape = SubResource("SphereShape3D_gdkps")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1920734017]
+stream = ExtResource("5_wgv6c")
+volume_db = -3.0
+max_distance = 8.0
+
+[node name="usebox" type="Area3D" parent="." unique_id=1786813413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32476798, 0)
+script = ExtResource("6_2ca4x")
+max_distance = 2.0
+min_distance = 0.1
+min_scale = Vector3(0, 0, 0)
+max_scale = Vector3(1, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="usebox" unique_id=1365506949]
+shape = SubResource("SphereShape3D_fgw8e")
+
+[node name="Sprite3D" type="Sprite3D" parent="usebox" unique_id=1101194120]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("7_logab")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1935015865]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, -0.00203247, 0.0057907104, 0.014172364)
+mesh = SubResource("BoxMesh_2yjle")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="usebox" to="usebox" method="_on_body_entered"]
+[connection signal="body_exited" from="usebox" to="usebox" method="_on_body_exited"]

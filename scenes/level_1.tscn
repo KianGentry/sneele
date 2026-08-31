@@ -39,7 +39,6 @@
 [ext_resource type="Script" uid="uid://dad511v5754ne" path="res://scenes/toilet.gd" id="37_wa552"]
 [ext_resource type="PackedScene" uid="uid://bruvxh48gsapw" path="res://scenes/jamie.tscn" id="38_v8pws"]
 [ext_resource type="Script" uid="uid://b1d8ygi56dpc1" path="res://scenes/item_data.gd" id="38_wom8k"]
-[ext_resource type="Texture2D" uid="uid://cg1lvwse0tgmg" path="res://textures/key.png" id="39_mteb0"]
 [ext_resource type="Texture2D" uid="uid://dy64t2bhd1e4p" path="res://textures/dildoblurred.png" id="39_wa552"]
 [ext_resource type="PackedScene" uid="uid://ptt3jw7jwucj" path="res://scenes/itemget.tscn" id="40_v0i6o"]
 [ext_resource type="Material" uid="uid://6jvektsflmtm" path="res://textures/pavement.tres" id="41_uuj1x"]
@@ -62,11 +61,13 @@
 [ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="58_88rua"]
 [ext_resource type="Texture2D" uid="uid://bo6cqkvi4dld7" path="res://textures/usebox.png" id="59_4ila6"]
 [ext_resource type="Material" uid="uid://dkxeh2xpg2vyv" path="res://textures/tile2.tres" id="61_iwav6"]
-[ext_resource type="Script" uid="uid://cpb6irbwpyquc" path="res://scenes/key.gd" id="62_7dh7s"]
 [ext_resource type="Material" uid="uid://b3wrccexhffai" path="res://textures/shelf.tres" id="62_n50md"]
+[ext_resource type="PackedScene" uid="uid://c65wr75lxcjmb" path="res://scenes/key.tscn" id="63_mteb0"]
 [ext_resource type="PackedScene" uid="uid://cx7mp8jfornk" path="res://dialogue/dialogue.tscn" id="63_shop"]
-[ext_resource type="AudioStream" uid="uid://du1bh1s4ac7ld" path="res://sounds/flush.mp3" id="63_ymcg8"]
 [ext_resource type="PackedScene" uid="uid://e6okn1mba42b" path="res://props/bin.tscn" id="65_ymcg8"]
+[ext_resource type="PackedScene" uid="uid://iwxy6qa5bnfh" path="res://scenes/milk.tscn" id="66_7dh7s"]
+[ext_resource type="PackedScene" uid="uid://p5bisyxmj6ib" path="res://scenes/sugar.tscn" id="67_ymcg8"]
+[ext_resource type="AudioStream" uid="uid://2ju4srqna5c2" path="res://sounds/buzz.mp3" id="68_gdkps"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wom8k"]
 _surfaces = [{
@@ -1154,17 +1155,6 @@ radius = 2.0180874
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_psqx4"]
 
-[sub_resource type="Resource" id="Resource_2yjle"]
-script = ExtResource("38_wom8k")
-name = "Key"
-texture = ExtResource("39_mteb0")
-metadata/_custom_type_script = "uid://b1d8ygi56dpc1"
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_gdkps"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_fgw8e"]
-radius = 2.0180874
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_lvvyj"]
 lightmap_size_hint = Vector2i(634, 634)
 _surfaces = [{
@@ -2245,6 +2235,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.606276, 0.64, 69.995895)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.110736, -0.63365805, 70.30443)
 script = ExtResource("57_48b18")
 
+[node name="buzz" type="AudioStreamPlayer" parent="level_1_1/Interactions/Interactable2" unique_id=1361845723]
+stream = ExtResource("68_gdkps")
+volume_db = -5.0
+pitch_scale = 1.12
+bus = &"interior"
+parameters/looping = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level_1_1/Interactions/Interactable2" unique_id=435585994]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30382162, 0)
 shape = SubResource("SphereShape3D_2yjle")
@@ -2306,42 +2303,8 @@ shape = SubResource("BoxShape3D_psqx4")
 [node name="Marker3D" type="Marker3D" parent="level_1_1/Interactions/transition" unique_id=230175254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6002903, -2.2369802, 0)
 
-[node name="Key" type="Area3D" parent="level_1_1/Interactions" unique_id=363960795]
+[node name="Key" parent="level_1_1/Interactions" unique_id=1760116788 instance=ExtResource("63_mteb0")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -6.6242504, 0.48108515, 68.965256)
-script = ExtResource("62_7dh7s")
-item = SubResource("Resource_2yjle")
-item_get_scene = ExtResource("40_v0i6o")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level_1_1/Interactions/Key" unique_id=25258484]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30382162, 0)
-shape = SubResource("SphereShape3D_gdkps")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="level_1_1/Interactions/Key" unique_id=599879065]
-stream = ExtResource("63_ymcg8")
-volume_db = -3.0
-max_distance = 8.0
-
-[node name="usebox" type="Area3D" parent="level_1_1/Interactions/Key" unique_id=908426363]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14930409, 0)
-script = ExtResource("58_88rua")
-max_distance = 2.0
-min_distance = 0.1
-min_scale = Vector3(0, 0, 0)
-max_scale = Vector3(1, 1, 1)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level_1_1/Interactions/Key/usebox" unique_id=528609360]
-shape = SubResource("SphereShape3D_fgw8e")
-
-[node name="Sprite3D" type="Sprite3D" parent="level_1_1/Interactions/Key/usebox" unique_id=495444978]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-billboard = 2
-texture_filter = 0
-texture = ExtResource("59_4ila6")
-
-[node name="Sprite3D" type="Sprite3D" parent="level_1_1/Interactions/Key" unique_id=1745538193]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, -0.091643125, 0)
-texture_filter = 0
-texture = ExtResource("39_mteb0")
 
 [node name="shop" type="Node3D" parent="." unique_id=1145291082]
 
@@ -2429,6 +2392,9 @@ shape = SubResource("ConvexPolygonShape3D_oy871")
 
 [node name="Interactions" type="Node" parent="shop" unique_id=968930013]
 
+[node name="milk" parent="shop/Interactions" unique_id=1469371155 instance=ExtResource("66_7dh7s")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -54.942944, -50.283928, 31.467709)
+
 [node name="transition" type="Area3D" parent="shop/Interactions" unique_id=1085437598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.160736, -48.607796, 43.531223)
 
@@ -2438,6 +2404,9 @@ shape = SubResource("BoxShape3D_2yjle")
 
 [node name="Marker3D" type="Marker3D" parent="shop/Interactions/transition" unique_id=1263351799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1987915, -1.7295227, -2.8003883)
+
+[node name="sugar" parent="shop" unique_id=231399622 instance=ExtResource("67_ymcg8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -61.370636, -50.427982, 34.469406)
 
 [connection signal="body_entered" from="Interactions/transition" to="." method="_on_transition_body_entered"]
 [connection signal="body_entered" from="level_1_1/Interactions/Interactable2" to="level_1_1/Interactions/Interactable2" method="_on_body_entered"]
@@ -2451,8 +2420,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1987915, -1.7295227, -2.80
 [connection signal="body_entered" from="level_1_1/Interactions/Interactable3/usebox" to="level_1_1/Interactions/Interactable3/usebox" method="_on_body_entered"]
 [connection signal="body_exited" from="level_1_1/Interactions/Interactable3/usebox" to="level_1_1/Interactions/Interactable3/usebox" method="_on_body_exited"]
 [connection signal="body_entered" from="level_1_1/Interactions/transition" to="." method="_on_transition_1_body_entered"]
-[connection signal="body_entered" from="level_1_1/Interactions/Key" to="level_1_1/Interactions/Key" method="_on_body_entered"]
-[connection signal="body_exited" from="level_1_1/Interactions/Key" to="level_1_1/Interactions/Key" method="_on_body_exited"]
-[connection signal="body_entered" from="level_1_1/Interactions/Key/usebox" to="level_1_1/Interactions/Key/usebox" method="_on_body_entered"]
-[connection signal="body_exited" from="level_1_1/Interactions/Key/usebox" to="level_1_1/Interactions/Key/usebox" method="_on_body_exited"]
 [connection signal="body_entered" from="shop/Interactions/transition" to="." method="_on_shop_body_entered"]

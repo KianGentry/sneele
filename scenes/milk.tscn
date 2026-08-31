@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://iwxy6qa5bnfh"]
+
+[ext_resource type="Script" uid="uid://bjk0q60kcd621" path="res://scenes/milk.gd" id="1_nxewm"]
+[ext_resource type="Script" uid="uid://b1d8ygi56dpc1" path="res://scenes/item_data.gd" id="2_i027c"]
+[ext_resource type="Texture2D" uid="uid://dti1r6c37g63n" path="res://textures/milk.png" id="3_3r78k"]
+[ext_resource type="PackedScene" uid="uid://ptt3jw7jwucj" path="res://scenes/itemget.tscn" id="4_k8pjg"]
+[ext_resource type="AudioStream" uid="uid://du1bh1s4ac7ld" path="res://sounds/flush.mp3" id="5_a1647"]
+[ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="6_1devl"]
+[ext_resource type="Texture2D" uid="uid://bo6cqkvi4dld7" path="res://textures/usebox.png" id="7_t3xd8"]
+
+[sub_resource type="Resource" id="Resource_2a8y6"]
+script = ExtResource("2_i027c")
+name = "Milk"
+texture = ExtResource("3_3r78k")
+metadata/_custom_type_script = "uid://b1d8ygi56dpc1"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gdkps"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fgw8e"]
+radius = 2.0180874
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r78k"]
+shading_mode = 2
+albedo_color = Color(0.8, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2yjle"]
+lightmap_size_hint = Vector2i(14, 29)
+material = SubResource("StandardMaterial3D_3r78k")
+size = Vector3(1, 1.8193359, 1)
+
+[node name="milk" type="Area3D" unique_id=1760116788]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_nxewm")
+item = SubResource("Resource_2a8y6")
+item_get_scene = ExtResource("4_k8pjg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1443679830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30382162, 0)
+shape = SubResource("SphereShape3D_gdkps")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1920734017]
+stream = ExtResource("5_a1647")
+volume_db = -3.0
+max_distance = 8.0
+
+[node name="usebox" type="Area3D" parent="." unique_id=1786813413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36995482, 0)
+script = ExtResource("6_1devl")
+max_distance = 2.0
+min_distance = 0.1
+min_scale = Vector3(0, 0, 0)
+max_scale = Vector3(1, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="usebox" unique_id=1365506949]
+shape = SubResource("SphereShape3D_fgw8e")
+
+[node name="Sprite3D" type="Sprite3D" parent="usebox" unique_id=1101194120]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("7_t3xd8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1935015865]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0.0614502, 0)
+mesh = SubResource("BoxMesh_2yjle")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="usebox" to="usebox" method="_on_body_entered"]
+[connection signal="body_exited" from="usebox" to="usebox" method="_on_body_exited"]

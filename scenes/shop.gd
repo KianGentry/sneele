@@ -11,7 +11,9 @@ var _pending_transition: bool = false
 @onready var blackbg: Sprite2D = $"../../../Background/Parallax2D/Sprite2D/Sprite2D2"
 @onready var shopspawn: Marker3D = $"../../../shop/Interactions/transition/Marker3D"
 @onready var dialogue: CanvasLayer = $dialogue
+@onready var buzz: AudioStreamPlayer = $buzz
 var objective_assigned: bool = false
+var times_entered: int = 0
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
@@ -91,6 +93,13 @@ func _has_key() -> bool:
 	return false
 
 func _do_transition() -> void:
+	times_entered += 1
+	if times_entered < 2:
+		ObjectiveManager.complete_objective("go_to_the_shops")
+		ObjectiveManager.add_objective("Get Milk", "Get milk from the shop's fridge or somet. No one sees these descriptions.", false)
+		ObjectiveManager.add_objective("Get Sugar", "Get sugar from the shelves... dummy!", false)
+	else:
+		return
 	_run_transition(shopspawn)
 
 func _run_transition(target_spawn: Marker3D) -> void:

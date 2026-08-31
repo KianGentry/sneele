@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://x07urpixm14t" path="res://textures/white.png" id="1_descy"]
 
 [resource]
+shading_mode = 2
+specular_mode = 2
 albedo_texture = ExtResource("1_descy")
 metallic_specular = 0.0
 texture_filter = 2

@@ -13,6 +13,11 @@ spread = 0.5
 hipass = 0.5
 wet = 0.2
 
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_j3pel"]
+resource_name = "HighPassFilter"
+cutoff_hz = 1000.0
+db = 1
+
 [resource]
 bus/1/name = &"coin"
 bus/1/solo = false
@@ -30,3 +35,11 @@ bus/2/volume_db = 0.0
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/2/effect/0/enabled = true
+bus/3/name = &"interior"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectHighPassFilter_j3pel")
+bus/3/effect/0/enabled = true

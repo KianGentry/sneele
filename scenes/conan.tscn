@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://c1lybs8ode0g3"]
+
+[ext_resource type="Script" uid="uid://cstgex4en0agh" path="res://scenes/nevomum.gd" id="1_tfcka"]
+[ext_resource type="Texture2D" uid="uid://xy1sm2j80cs7" path="res://textures/conan.png" id="2_tfcka"]
+[ext_resource type="AudioStream" uid="uid://4mvnppbvj7fp" path="res://sounds/mum.mp3" id="4_5382f"]
+[ext_resource type="PackedScene" uid="uid://cx7mp8jfornk" path="res://dialogue/dialogue.tscn" id="4_w5pbd"]
+[ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="5_qcy6s"]
+[ext_resource type="Texture2D" uid="uid://bcw1mkig5ke4a" path="res://textures/dialoguebox.png" id="6_w5pbd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ror8x"]
+atlas = ExtResource("2_tfcka")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5382f"]
+atlas = ExtResource("2_tfcka")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tb88r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ror8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5382f")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2yjle"]
+size = Vector3(0.42259216, 0.91503906, 0.39149475)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2yjle"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5x3aw"]
+radius = 4.0
+
+[node name="nevomum" type="Node3D" unique_id=1682060934]
+script = ExtResource("1_tfcka")
+character_name = "Conan"
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1815674004]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)
+billboard = 2
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_tb88r")
+autoplay = "default"
+frame_progress = 0.014855874
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1842918551]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=750515086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015419006, 0.04248047, 0.014549255)
+shape = SubResource("BoxShape3D_2yjle")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=608847594]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1408281573]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("SphereShape3D_2yjle")
+
+[node name="dialogue" parent="." unique_id=1226244576 node_paths=PackedStringArray("blip_player") instance=ExtResource("4_w5pbd")]
+blip_player = NodePath("../AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2343326]
+stream = ExtResource("4_5382f")
+volume_db = -2.0
+
+[node name="importantdialoguebox" type="Area3D" parent="." unique_id=1935183440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93610716, 0)
+script = ExtResource("5_qcy6s")
+max_distance = 4.0
+min_distance = 0.0
+max_scale = Vector3(2.5, 2.5, 2.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="importantdialoguebox" unique_id=74544369]
+shape = SubResource("SphereShape3D_5x3aw")
+
+[node name="Sprite3D" type="Sprite3D" parent="importantdialoguebox" unique_id=1934359447]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+modulate = Color(1, 0.34117648, 1, 1)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("6_w5pbd")
+
+[node name="Timer" type="Timer" parent="." unique_id=513778955]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="dialogue_closed" from="dialogue" to="." method="_on_dialogue_closed"]
+[connection signal="body_entered" from="importantdialoguebox" to="importantdialoguebox" method="_on_body_entered"]
+[connection signal="body_exited" from="importantdialoguebox" to="importantdialoguebox" method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
