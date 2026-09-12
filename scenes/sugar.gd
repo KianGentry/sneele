@@ -13,6 +13,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if player_in_range and event.is_action_pressed("use"):
 		interact()
 
+func _has_milk() -> bool:
+	for item in InventoryManager.get_items():
+		if item.name.to_lower() == "milk":
+			return true
+	return false
+
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
@@ -31,6 +37,8 @@ func interact() -> void:
 		return
 
 	ObjectiveManager.complete_objective("get_sugar")
+	if _has_milk():
+		ObjectiveManager.add_objective("Pay for shopping", "", true)
 	var ui_layer = CanvasLayer.new()
 	ui_layer.layer = 100 
 	get_tree().current_scene.add_child(ui_layer)

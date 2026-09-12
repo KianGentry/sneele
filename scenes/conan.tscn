@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c1lybs8ode0g3"]
 
-[ext_resource type="Script" uid="uid://cstgex4en0agh" path="res://scenes/nevomum.gd" id="1_tfcka"]
+[ext_resource type="Script" uid="uid://dhdceea5xa3kr" path="res://scenes/conan.gd" id="1_tfcka"]
 [ext_resource type="Texture2D" uid="uid://xy1sm2j80cs7" path="res://textures/conan.png" id="2_tfcka"]
-[ext_resource type="AudioStream" uid="uid://4mvnppbvj7fp" path="res://sounds/mum.mp3" id="4_5382f"]
+[ext_resource type="AudioStream" uid="uid://de1ucjptgd7y2" path="res://sounds/conansound.mp3" id="4_tfcka"]
 [ext_resource type="PackedScene" uid="uid://cx7mp8jfornk" path="res://dialogue/dialogue.tscn" id="4_w5pbd"]
 [ext_resource type="Script" uid="uid://12hirj56gf8l" path="res://indicator.gd" id="5_qcy6s"]
 [ext_resource type="Texture2D" uid="uid://bcw1mkig5ke4a" path="res://textures/dialoguebox.png" id="6_w5pbd"]
@@ -37,9 +37,10 @@ size = Vector3(0.42259216, 0.91503906, 0.39149475)
 [sub_resource type="SphereShape3D" id="SphereShape3D_5x3aw"]
 radius = 4.0
 
-[node name="nevomum" type="Node3D" unique_id=1682060934]
+[node name="conan" type="Node3D" unique_id=1682060934]
 script = ExtResource("1_tfcka")
-character_name = "Conan"
+lines = ["Hi.", "Come to pay for shopping?", "I'm not arsed really. I don't see any of it. Just take it."]
+complete_lines = ["I said take it, leave."]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1815674004]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)
@@ -68,11 +69,11 @@ shape = SubResource("SphereShape3D_2yjle")
 blip_player = NodePath("../AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2343326]
-stream = ExtResource("4_5382f")
+stream = ExtResource("4_tfcka")
 volume_db = -2.0
 
 [node name="importantdialoguebox" type="Area3D" parent="." unique_id=1935183440]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93610716, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53828394, 0)
 script = ExtResource("5_qcy6s")
 max_distance = 4.0
 min_distance = 0.0

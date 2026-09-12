@@ -40,7 +40,7 @@ radius = 4.0
 [node name="nevomum" type="Node3D" unique_id=1682060934]
 script = ExtResource("1_ni51f")
 character_name = "Mum"
-lines = ["Nevo!", "God, we've ran out of milk and sugar AGAIN!", "Must be all your cuppas, cheeky boy!", "Anyway, would you be a dear and nip to the shops? It's the least you could do.", "Ta-ta now!"]
+lines = ["Nevo!", "God, we've ran out of milk and sugar AGAIN!", "Would you be a dear and nip to the shops? It's the least you could do.", "Ta-ta now!"]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1815674004]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 1.373, 0, 0, 0)

@@ -20,8 +20,8 @@ metadata/_custom_type_script = "uid://b1d8ygi56dpc1"
 radius = 2.0180874
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r78k"]
-shading_mode = 2
-albedo_color = Color(0.8, 1, 1, 1)
+shading_mode = 0
+albedo_color = Color(5.0055983e-06, 0.57410777, 0.58124745, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2yjle"]
 lightmap_size_hint = Vector2i(14, 29)

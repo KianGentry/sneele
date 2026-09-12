@@ -21,6 +21,12 @@ func _on_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
 
+func _has_sugar() -> bool:
+	for item in InventoryManager.get_items():
+		if item.name.to_lower() == "sugar":
+			return true
+	return false
+
 func interact() -> void:
 	if item == null:
 		push_warning("No ItemData assigned to interactable %s!" % name)
@@ -31,6 +37,8 @@ func interact() -> void:
 		return
 
 	ObjectiveManager.complete_objective("get_milk")
+	if _has_sugar():
+		ObjectiveManager.add_objective("Pay for shopping", "", true)
 	var ui_layer = CanvasLayer.new()
 	ui_layer.layer = 100 
 	get_tree().current_scene.add_child(ui_layer)

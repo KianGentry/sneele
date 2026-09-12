@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://b1d8ygi56dpc1"
 radius = 2.0180874
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3r78k"]
-shading_mode = 2
+shading_mode = 0
 albedo_color = Color(0.43177083, 0.68117356, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2yjle"]

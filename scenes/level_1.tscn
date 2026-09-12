@@ -68,6 +68,7 @@
 [ext_resource type="PackedScene" uid="uid://iwxy6qa5bnfh" path="res://scenes/milk.tscn" id="66_7dh7s"]
 [ext_resource type="PackedScene" uid="uid://p5bisyxmj6ib" path="res://scenes/sugar.tscn" id="67_ymcg8"]
 [ext_resource type="AudioStream" uid="uid://2ju4srqna5c2" path="res://sounds/buzz.mp3" id="68_gdkps"]
+[ext_resource type="PackedScene" uid="uid://c1lybs8ode0g3" path="res://scenes/conan.tscn" id="69_fgw8e"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wom8k"]
 _surfaces = [{
@@ -2405,8 +2406,12 @@ shape = SubResource("BoxShape3D_2yjle")
 [node name="Marker3D" type="Marker3D" parent="shop/Interactions/transition" unique_id=1263351799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1987915, -1.7295227, -2.8003883)
 
+[node name="conan" parent="shop/Interactions" unique_id=945614006 instance=ExtResource("69_fgw8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.46034, -50.047997, 30.769093)
+
 [node name="sugar" parent="shop" unique_id=231399622 instance=ExtResource("67_ymcg8")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -61.370636, -50.427982, 34.469406)
+item_get_scene = ExtResource("40_v0i6o")
 
 [connection signal="body_entered" from="Interactions/transition" to="." method="_on_transition_body_entered"]
 [connection signal="body_entered" from="level_1_1/Interactions/Interactable2" to="level_1_1/Interactions/Interactable2" method="_on_body_entered"]

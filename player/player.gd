@@ -110,7 +110,7 @@ func _ready() -> void:
 	ObjectiveManager.objective_added.connect(_on_objective_added)
 	ObjectiveManager.objective_updated.connect(_on_objective_updated)
 	
-func _on_objective_added(objective: Objective) -> void:
+func _on_objective_added(_objective: Objective) -> void:
 	if ui.is_obj_playing == false:
 		if obj_open == false:
 			ui.obj_animation.play("slide")
