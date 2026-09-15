@@ -39,6 +39,7 @@ radius = 4.0
 
 [node name="conan" type="Node3D" unique_id=1682060934]
 script = ExtResource("1_tfcka")
+character_name = "Shopkeeper"
 lines = ["Hi.", "Come to pay for shopping?", "I'm not arsed really. I don't see any of it. Just take it."]
 complete_lines = ["I said take it, leave."]
 
@@ -70,7 +71,7 @@ blip_player = NodePath("../AudioStreamPlayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2343326]
 stream = ExtResource("4_tfcka")
-volume_db = -2.0
+volume_db = -4.0
 
 [node name="importantdialoguebox" type="Area3D" parent="." unique_id=1935183440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53828394, 0)

@@ -1,0 +1,92 @@
+[gd_scene format=4 uid="uid://iimj2qjns5p3"]
+
+[ext_resource type="Script" uid="uid://cwu5cf7a0awcd" path="res://addons/func_godot/src/map/func_godot_map.gd" id="1_d5kir"]
+[ext_resource type="Script" uid="uid://lqerw3p4ppad" path="res://scenes/level_test.gd" id="1_plvai"]
+[ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="2_plvai"]
+[ext_resource type="Shader" uid="uid://bvpvykdx4y5b" path="res://shaders/holeinwall.gdshader" id="2_yvmk3"]
+[ext_resource type="Texture2D" uid="uid://cxwxpg6mb4552" path="res://textures/sky.jpg" id="3_7dxvt"]
+[ext_resource type="Material" uid="uid://bawdj0qp3xlix" path="res://textures/wood.tres" id="3_vkcgd"]
+[ext_resource type="Texture2D" uid="uid://dwtsesn50mcuk" path="res://textures/black.png" id="4_6g5uf"]
+[ext_resource type="PackedScene" uid="uid://ioukfdhtavyu" path="res://player/player.tscn" id="5_vkcgd"]
+[ext_resource type="PackedScene" uid="uid://d1ytlo23r84y7" path="res://shaders/postprocessor.tscn" id="7_6g5uf"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vkcgd"]
+_surfaces = [{
+"aabb": AABB(-4.25, -0.25, -4.25, 8.5, 0.25, 8.5),
+"attribute_data": PackedByteArray("AAAIwAAAAAAAAAhAAAAAAAAACEAAAAA+AAAIwAAAAD4AAAhAAAAAPgAACMAAAAA+AAAIwAAAAAAAAAhAAAAAAAAACMAAAAhAAAAIwAAACMAAAAhAAAAIwAAACEAAAAhAAAAIQAAACEAAAAjAAAAIQAAACMAAAAjAAAAIQAAACMAAAAjAAAAAAAAACEAAAAAAAAAIQAAAAD4AAAjAAAAAPgAACEAAAAA+AAAIwAAAAD4AAAjAAAAAAAAACEAAAAAA"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
+"material": ExtResource("3_vkcgd"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AACIQAAAAAAAAIjAAACIwAAAAAAAAIjAAACIwAAAgL4AAIjAAACIQAAAgL4AAIjAAACIwAAAgL4AAIhAAACIwAAAgL4AAIjAAACIwAAAAAAAAIjAAACIwAAAAAAAAIhAAACIwAAAgL4AAIhAAACIQAAAgL4AAIhAAACIQAAAgL4AAIjAAACIwAAAgL4AAIjAAACIwAAAAAAAAIhAAACIwAAAAAAAAIjAAACIQAAAAAAAAIjAAACIQAAAAAAAAIhAAACIQAAAAAAAAIhAAACIQAAAAAAAAIjAAACIQAAAgL4AAIjAAACIQAAAgL4AAIhAAACIQAAAgL4AAIhAAACIwAAAgL4AAIhAAACIwAAAAAAAAIhAAACIQAAAAAAAAIhA/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
+}]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yvmk3"]
+points = PackedVector3Array(4.25, 0, 4.25, 4.25, -0.25, 4.25, -4.25, 0, 4.25, -4.25, -0.25, 4.25, 4.25, 0, -4.25, 4.25, -0.25, -4.25, -4.25, 0, -4.25, -4.25, -0.25, -4.25)
+
+[sub_resource type="Environment" id="Environment_plvai"]
+background_energy_multiplier = 0.0
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.01
+
+[node name="level_test" type="Node3D" unique_id=1937782457]
+script = ExtResource("1_plvai")
+cutout_shader = ExtResource("2_yvmk3")
+ignore_textures = Array[String](["wood"])
+
+[node name="World" type="Node" parent="." unique_id=152421869]
+
+[node name="FuncGodotMap" type="Node3D" parent="World" unique_id=896225072]
+script = ExtResource("1_d5kir")
+local_map_file = "uid://bb4lx75k3domy"
+map_settings = ExtResource("2_plvai")
+build_flags = 1
+metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
+
+[node name="entity_0_worldspawn" type="StaticBody3D" parent="World/FuncGodotMap" unique_id=1421615536]
+collision_mask = 0
+
+[node name="entity_0_mesh_instance" type="MeshInstance3D" parent="World/FuncGodotMap/entity_0_worldspawn" unique_id=1570423583]
+mesh = SubResource("ArrayMesh_vkcgd")
+
+[node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="World/FuncGodotMap/entity_0_worldspawn" unique_id=1515170311]
+shape = SubResource("ConvexPolygonShape3D_yvmk3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=371216007]
+environment = SubResource("Environment_plvai")
+
+[node name="Entities" type="Node" parent="." unique_id=465110786]
+
+[node name="Interactions" type="Node" parent="." unique_id=1804483090]
+
+[node name="Player" parent="Interactions" unique_id=782366723 instance=ExtResource("5_vkcgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022577822, 1.5336213, -0.05926943)
+
+[node name="Misc" type="Node" parent="." unique_id=411148027]
+
+[node name="postprocessor" parent="." unique_id=1387536302 instance=ExtResource("7_6g5uf")]
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=589089884]
+layer = -100
+visible = false
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=829772168]
+repeat_size = Vector2(2080, 1560)
+autoscroll = Vector2(0.2, 0)
+repeat_times = 12
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=2120493428]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("3_7dxvt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D/Sprite2D" unique_id=1603716018]
+visible = false
+position = Vector2(-7.000147, 776.5)
+scale = Vector2(66.875, 49.406246)
+texture = ExtResource("4_6g5uf")

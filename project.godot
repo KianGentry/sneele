@@ -14,7 +14,10 @@ config/name="Nevscop"
 run/main_scene="uid://w4l7pf2s7otb"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=30
-config/icon="res://icon.svg"
+boot_splash/stretch_mode=0
+boot_splash/use_filter=false
+boot_splash/image="uid://qmhe7kj1pynd"
+config/icon="uid://qmhe7kj1pynd"
 
 [audio]
 
@@ -35,8 +38,11 @@ formats/zstd/compression_level=1
 
 window/size/viewport_width=320
 window/size/viewport_height=240
+window/size/mode=3
+window/size/resizable=false
+window/size/borderless=true
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
