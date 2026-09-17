@@ -10,6 +10,8 @@ extends Node3D
 @onready var lvl1_1_spawn: Marker3D = $level_1_1/Interactions/transition/Marker3D
 @onready var shop_spawn: Marker3D = $level_1_1/Interactions/Interactable2/Marker3D
 @onready var blackbg: Sprite2D = $Background/Parallax2D/Sprite2D/Sprite2D2
+@onready var lvl1_2_spawn: Marker3D = $level_1_2/Interactions/transition/Marker3D
+@onready var autumn_spawn: Marker3D = $level_1_1/Interactions/transition2/Marker3D
 
 # textures to ignore in shader
 @export var ignore_textures: Array[String] = []
@@ -72,7 +74,7 @@ func _convert_mesh_materials(mesh_instance: MeshInstance3D) -> void:
 
 func _on_transition_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		await _run_transition(lvl1_1_spawn, false)
+		_run_transition(lvl1_1_spawn, false)
 
 
 func _on_transition_1_body_entered(body: Node3D) -> void:
@@ -108,3 +110,13 @@ func _on_shop_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		await _run_transition(shop_spawn, false)
 		blackbg.visible = false
+
+
+func _on_transition_2_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		_run_transition(lvl1_2_spawn, false)
+
+
+func _on_level12_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player"):
+		_run_transition(autumn_spawn, false)

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b5djtmiafva7d"]
+
+[ext_resource type="Texture2D" uid="uid://civl37apturm3" path="res://textures/tree1.png" id="1_t4elu"]
+
+[resource]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_t4elu")
+metallic_specular = 0.0
+texture_filter = 2

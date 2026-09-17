@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b41p5ejws5tii"]
+
+[ext_resource type="Texture2D" uid="uid://civl37apturm3" path="res://textures/tree1.png" id="1_tem7l"]
+
+[node name="tree1" type="Node3D" unique_id=1247927725]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1408603857]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 2
+alpha_cut = 3
+alpha_hash_scale = 2.0
+texture_filter = 0
+texture = ExtResource("1_tem7l")

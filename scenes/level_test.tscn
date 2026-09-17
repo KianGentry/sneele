@@ -28,12 +28,6 @@ _surfaces = [{
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_yvmk3"]
 points = PackedVector3Array(4.25, 0, 4.25, 4.25, -0.25, 4.25, -4.25, 0, 4.25, -4.25, -0.25, 4.25, 4.25, 0, -4.25, 4.25, -0.25, -4.25, -4.25, 0, -4.25, -4.25, -0.25, -4.25)
 
-[sub_resource type="Environment" id="Environment_plvai"]
-background_energy_multiplier = 0.0
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.01
-
 [node name="level_test" type="Node3D" unique_id=1937782457]
 script = ExtResource("1_plvai")
 cutout_shader = ExtResource("2_yvmk3")
@@ -58,7 +52,6 @@ mesh = SubResource("ArrayMesh_vkcgd")
 shape = SubResource("ConvexPolygonShape3D_yvmk3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World" unique_id=371216007]
-environment = SubResource("Environment_plvai")
 
 [node name="Entities" type="Node" parent="." unique_id=465110786]
 
